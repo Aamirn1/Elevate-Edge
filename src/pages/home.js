@@ -143,9 +143,11 @@ export function renderHome() {
         </div>
         
         <div class="slider-controls reveal">
-          <button class="slider-btn" id="home-slider-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <div class="slider-btn-group">
+            <button class="slider-btn" id="home-slider-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn" id="home-slider-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          </div>
           <div class="slider-dots" id="home-slider-dots"></div>
-          <button class="slider-btn" id="home-slider-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
     </section>
