@@ -1,0 +1,14 @@
+<svg viewBox="0 0 100 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logo_grad" x1="0" y1="0" x2="100" y2="85" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00b894"/>
+      <stop offset="1" stop-color="#0984e3"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Rising Growth Bars -->
+  <rect x="0" y="55" width="16" height="30" rx="3" fill="url(#logo_grad)" opacity="0.4"/>
+  <rect x="22" y="35" width="16" height="50" rx="3" fill="url(#logo_grad)" opacity="0.6"/>
+  <rect x="44" y="15" width="16" height="70" rx="3" fill="url(#logo_grad)" opacity="0.8"/>
+  <rect x="66" y="0" width="16" height="85" rx="3" fill="url(#logo_grad)"/>
+</svg>

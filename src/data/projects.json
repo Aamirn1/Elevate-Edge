@@ -1,0 +1,68 @@
+[
+  {
+    "name": "batch-trade",
+    "title": "Batch Trade",
+    "description": "A vite project built with care.",
+    "tags": [
+      "vite",
+      "Vercel"
+    ],
+    "image": "/projects/batch-trade.png",
+    "url": "https://batch-trade.vercel.app"
+  },
+  {
+    "name": "khurram-tent-studio",
+    "title": "Khurram Tent Studio",
+    "description": "A vite project built with care.",
+    "tags": [
+      "vite",
+      "Vercel"
+    ],
+    "image": "/projects/khurram-tent-studio.png",
+    "url": "https://khurram-tent-studio.vercel.app"
+  },
+  {
+    "name": "chohan-s-style-hub",
+    "title": "Chohan's Style Hub",
+    "description": "A vite project built with care.",
+    "tags": [
+      "vite",
+      "Vercel"
+    ],
+    "image": "/projects/chohan-s-style-hub.png",
+    "url": "https://chohan-s-style-hub.vercel.app"
+  },
+  {
+    "name": "fitness-equipment",
+    "title": "Fitness Equipment",
+    "description": "A vite project built with care.",
+    "tags": [
+      "vite",
+      "Vercel"
+    ],
+    "image": "/projects/fitness-equipment.png",
+    "url": "https://fitness-equipment-ten.vercel.app/"
+  },
+  {
+    "name": "royaldairylife",
+    "title": "Royal Dairy Life",
+    "description": "A vite project built with care.",
+    "tags": [
+      "vite",
+      "Vercel"
+    ],
+    "image": "/projects/royaldairylife.png",
+    "url": "https://royaldairylife.vercel.app"
+  },
+  {
+    "name": "chohan-s-saloon",
+    "title": "Chohan's Saloon",
+    "description": "A professional project from my Vercel portfolio.",
+    "tags": [
+      "Web",
+      "Vercel"
+    ],
+    "image": "/projects/chohan-s-saloon.png",
+    "url": "https://chohan-s-saloon.vercel.app"
+  }
+]
