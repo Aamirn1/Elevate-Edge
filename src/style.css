@@ -60,6 +60,13 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -1779,14 +1786,15 @@ button {
   }
 
   .portfolio-slider {
-    width: calc(100% + 40px);
-    margin-left: -20px;
-    border-radius: 0;
-    overflow: visible;
+    width: 100%;
+    margin-left: 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
   }
 
   .portfolio-track {
-    padding: 0 20px;
+    padding: 0;
   }
 
   .portfolio-slide {
@@ -1795,8 +1803,9 @@ button {
     gap: 24px;
     width: 100%;
     min-width: 100%;
-    padding: 0 10px;
+    padding: 0 16px;
     align-items: center;
+    flex-shrink: 0;
   }
 
   .portfolio-slide .slide-img {
@@ -1864,10 +1873,11 @@ button {
 
   /* Fix floating overlap */
   .whatsapp-fab {
-    width: 50px;
-    height: 50px;
-    bottom: 85px;
-    right: 20px;
+    width: 44px;
+    height: 44px;
+    bottom: 95px;
+    right: 16px;
+    z-index: 1001;
   }
 
   .whatsapp-fab i {
@@ -1875,10 +1885,11 @@ button {
   }
 
   .chat-toggle {
-    width: 50px;
-    height: 50px;
-    bottom: 20px;
-    right: 20px;
+    width: 44px;
+    height: 44px;
+    bottom: 40px;
+    right: 16px;
+    z-index: 1001;
   }
 
   .chat-toggle i {
@@ -1894,7 +1905,15 @@ button {
 
   .hero {
     padding: 140px 0 80px;
-    overflow-x: hidden;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  .hero-bg,
+  .hero-shape {
+    max-width: 100vw;
+    overflow: hidden;
   }
 
   .nav-links {
@@ -1927,7 +1946,9 @@ button {
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 7vw, 3rem);
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .hero-stats {
