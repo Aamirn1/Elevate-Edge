@@ -307,7 +307,10 @@ button {
   flex-direction: column;
   gap: 5px;
   background: none;
-  padding: 4px;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  align-self: center;
 }
 
 .hamburger span {
@@ -1775,18 +1778,70 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .portfolio-slider {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  .portfolio-track {
+    padding: 0 20px;
+  }
+
   .portfolio-slide {
     flex-direction: column;
     text-align: center;
-    gap: 20px;
+    gap: 24px;
+    width: 100%;
+    min-width: 100%;
+    padding: 0 10px;
+    align-items: center;
+  }
+
+  .portfolio-slide .slide-img {
+    width: 100%;
+    flex: none;
   }
 
   .portfolio-slide .slide-img img {
-    height: 250px;
+    height: 280px;
+    width: 100%;
+    border-radius: var(--radius-lg);
   }
 
   .portfolio-slide .slide-info {
     padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .portfolio-slide .slide-info h3 {
+    font-size: 1.6rem;
+  }
+
+  .portfolio-slide .slide-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .slider-controls {
+    margin-top: 40px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .slider-btn {
+    width: 44px;
+    height: 44px;
+    background: var(--bg-surface);
+  }
+
+  .slider-dot.active {
+    width: 24px;
   }
 
   .service-detail-card {
@@ -1799,10 +1854,46 @@ button {
 
   .navbar-brand,
   .brand-text-glass {
-    font-size: 1.65rem;
+    font-size: 1.6rem;
   }
 
   .navbar .container {
+    overflow-x: hidden;
+    padding: 0 20px;
+  }
+
+  /* Fix floating overlap */
+  .whatsapp-fab {
+    width: 50px;
+    height: 50px;
+    bottom: 85px;
+    right: 20px;
+  }
+
+  .whatsapp-fab i {
+    font-size: 1.4rem;
+  }
+
+  .chat-toggle {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .chat-toggle i {
+    font-size: 1.3rem;
+  }
+
+  .chat-box {
+    bottom: 80px;
+    right: 20px;
+    width: calc(100vw - 40px);
+    max-height: 70vh;
+  }
+
+  .hero {
+    padding: 140px 0 80px;
     overflow-x: hidden;
   }
 
@@ -1869,11 +1960,6 @@ button {
     padding: 24px;
   }
 
-  .chat-box {
-    width: calc(100vw - 32px);
-    right: 16px;
-  }
-
   .slider-controls {
     margin-top: 20px;
     gap: 12px;
@@ -1900,14 +1986,33 @@ button {
 
   .navbar-brand,
   .brand-text-glass {
-    font-size: 1.35rem;
+    font-size: 1.3rem;
   }
 
   .container {
     padding: 0 16px;
   }
 
+  .hero h1 {
+    font-size: 2.3rem;
+    letter-spacing: -1px;
+  }
+
   .portfolio-slide .slide-img img {
-    height: 200px;
+    height: 220px;
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-btns {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .hero-btns .btn {
+    width: 100%;
+    max-width: none;
   }
 }
