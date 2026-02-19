@@ -2062,11 +2062,13 @@ button {
   transform: translateY(0) scale(1);
 }
 
-.scroll-top:hover {
-  background: var(--accent);
-  color: #fff;
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 8px 25px rgba(9, 132, 227, 0.4);
+@media (hover: hover) {
+  .scroll-top:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(9, 132, 227, 0.4);
+  }
 }
 
 @media (max-width: 768px) {
