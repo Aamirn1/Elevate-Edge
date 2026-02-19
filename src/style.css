@@ -2157,7 +2157,15 @@ button {
 
   .navbar-brand,
   .brand-text-glass {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+  }
+
+  .brand-logo-glass {
+    height: 34px;
+  }
+
+  .brand-metallic-wrap {
+    gap: 8px;
   }
 
   .navbar .container {
@@ -2327,7 +2335,7 @@ button {
 
   .navbar-brand,
   .brand-text-glass {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .container {
