@@ -1,5 +1,5 @@
 export function renderServices() {
-    return `
+  return `
     <!-- Page Hero -->
     <section class="hero" style="min-height:50vh;padding:160px 0 60px;">
       <div class="hero-bg">
@@ -43,7 +43,7 @@ export function renderServices() {
           <div class="service-detail-card reveal">
             <div class="service-detail-icon">
               <i class="fas fa-bullhorn"></i>
-              <div class="growth-visual" style="margin-top:24px;">
+              <div class="growth-visual">
                 <div class="bar growth-bar" style="--bar-h:40px;"></div>
                 <div class="bar growth-bar" style="--bar-h:60px;animation-delay:0.1s;"></div>
                 <div class="bar growth-bar" style="--bar-h:50px;animation-delay:0.2s;"></div>
@@ -70,7 +70,7 @@ export function renderServices() {
           <div class="service-detail-card reveal">
             <div class="service-detail-icon">
               <i class="fas fa-hashtag"></i>
-              <div class="social-cluster" style="margin-top:24px;">
+              <div class="social-cluster">
                 <div class="s-icon fb bounce-hover"><i class="fab fa-facebook-f"></i></div>
                 <div class="s-icon ig bounce-hover"><i class="fab fa-instagram"></i></div>
                 <div class="s-icon tw bounce-hover"><i class="fab fa-twitter"></i></div>

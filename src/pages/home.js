@@ -76,6 +76,23 @@ export function renderHome() {
       </div>
     </section>
 
+    <!-- Agency Trust Bar -->
+    <section class="trust-bar">
+      <div class="container">
+        <div class="trust-bar-inner">
+          <div class="trust-item"><i class="fas fa-globe"></i><span>Web Design &amp; Development</span></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><i class="fas fa-bullhorn"></i><span>Digital Marketing &amp; Ads</span></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><i class="fas fa-hashtag"></i><span>Social Media Management</span></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><i class="fas fa-search"></i><span>SEO Optimization</span></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><i class="fas fa-paint-brush"></i><span>Brand Identity Design</span></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Services Overview -->
     <section class="services-section">
       <div class="container">
@@ -128,6 +145,91 @@ export function renderHome() {
       </div>
     </section>
 
+    <!-- Why Choose Us -->
+    <section class="why-us-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Why Choose <span class="gradient-text">ElevateEdge?</span></h2>
+          <p>We're not just an agency — we're your dedicated digital growth partner.</p>
+        </div>
+        <div class="why-us-grid">
+          <div class="why-us-card reveal">
+            <div class="why-us-icon"><i class="fas fa-dollar-sign"></i></div>
+            <h3>Affordable Pricing</h3>
+            <p>Premium digital services at prices that work for startups, SMEs, and growing businesses. No hidden fees, ever.</p>
+          </div>
+          <div class="why-us-card reveal">
+            <div class="why-us-icon"><i class="fas fa-tachometer-alt"></i></div>
+            <h3>Fast Turnaround</h3>
+            <p>We deliver your website or campaign in record time without compromising on quality or attention to detail.</p>
+          </div>
+          <div class="why-us-card reveal">
+            <div class="why-us-icon"><i class="fas fa-chart-bar"></i></div>
+            <h3>Results-Driven</h3>
+            <p>Every strategy we build is focused on measurable outcomes — more leads, more traffic, more revenue for you.</p>
+          </div>
+          <div class="why-us-card reveal">
+            <div class="why-us-icon"><i class="fas fa-users"></i></div>
+            <h3>Dedicated Support</h3>
+            <p>A real team that listens, communicates, and stays with you long after launch. We grow as your business grows.</p>
+          </div>
+          <div class="why-us-card reveal">
+            <div class="why-us-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Mobile-First Design</h3>
+            <p>All our websites are built mobile-first, ensuring a flawless experience on every screen size and device.</p>
+          </div>
+          <div class="why-us-card reveal">
+            <div class="why-us-icon"><i class="fas fa-lock"></i></div>
+            <h3>Secure &amp; Reliable</h3>
+            <p>SSL, fast hosting, and best-practice security baked into every project so your business stays protected.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Work -->
+    <section class="process-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>How We <span class="gradient-text">Work</span></h2>
+          <p>A simple, transparent process designed to get you results fast.</p>
+        </div>
+        <div class="process-steps">
+          <div class="process-step reveal">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3>Discovery Call</h3>
+              <p>We start with a free consultation to understand your business, goals, and target audience.</p>
+            </div>
+          </div>
+          <div class="process-connector"></div>
+          <div class="process-step reveal">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3>Strategy &amp; Design</h3>
+              <p>Our team crafts a tailored digital strategy and presents design concepts for your approval.</p>
+            </div>
+          </div>
+          <div class="process-connector"></div>
+          <div class="process-step reveal">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3>Build &amp; Launch</h3>
+              <p>We develop, test, and launch your website or campaign with precision and speed.</p>
+            </div>
+          </div>
+          <div class="process-connector"></div>
+          <div class="process-step reveal">
+            <div class="step-number">04</div>
+            <div class="step-content">
+              <h3>Grow &amp; Optimize</h3>
+              <p>We monitor performance, run optimizations, and keep your digital presence ahead of the competition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Portfolio Section -->
     <section class="portfolio-section">
       <div class="container">
@@ -143,11 +245,9 @@ export function renderHome() {
         </div>
         
         <div class="slider-controls reveal">
-          <div class="slider-btn-group">
-            <button class="slider-btn" id="home-slider-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-            <button class="slider-btn" id="home-slider-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
-          </div>
+          <button class="slider-btn" id="home-slider-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
           <div class="slider-dots" id="home-slider-dots"></div>
+          <button class="slider-btn" id="home-slider-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
     </section>

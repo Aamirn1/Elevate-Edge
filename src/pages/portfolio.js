@@ -87,11 +87,11 @@ export function renderPortfolio() {
           </div>
         </div>
         <div class="slider-controls">
-          <div class="slider-btn-group">
-            <button class="slider-btn" id="slider-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
-            <button class="slider-btn" id="slider-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+          <button class="slider-btn" id="slider-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+          <div class="slider-dots" id="slider-dots">
+            ${dotsHTML}
           </div>
-          <div class="slider-dots" id="slider-dots">${dotsHTML}</div>
+          <button class="slider-btn" id="slider-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
         </div>
       </div>
     </section>
