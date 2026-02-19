@@ -1707,6 +1707,12 @@ button {
   transition: all 0.7s var(--ease);
 }
 
+@media (max-width: 768px) {
+  .reveal-left {
+    transform: translateX(-15px);
+  }
+}
+
 .reveal-left.visible {
   opacity: 1;
   transform: translateX(0);
@@ -1716,6 +1722,12 @@ button {
   opacity: 0;
   transform: translateX(40px);
   transition: all 0.7s var(--ease);
+}
+
+@media (max-width: 768px) {
+  .reveal-right {
+    transform: translateX(15px);
+  }
 }
 
 .reveal-right.visible {
@@ -2260,7 +2272,33 @@ button {
   }
 
   .contact-form {
-    padding: 24px;
+    padding: 20px;
+  }
+
+  /* Redesign Contact Cards for Mobile (Stacking like About section) */
+  .contact-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px 20px;
+    gap: 12px;
+  }
+
+  .contact-card div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-card .icon-box {
+    margin-bottom: 4px;
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+
+  .contact-grid {
+    gap: 32px;
   }
 
   .slider-controls {
