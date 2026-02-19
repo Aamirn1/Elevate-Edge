@@ -45,10 +45,18 @@ export function initScrollTop() {
     };
 
     btn.addEventListener('click', () => {
+        // Show visual feedback (blue state)
+        btn.classList.add('clicked');
+
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
+
+        // Automatically revert to transparent state after animation/scroll
+        setTimeout(() => {
+            btn.classList.remove('clicked');
+        }, 800);
     });
 
     window.addEventListener('scroll', handleScroll);

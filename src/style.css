@@ -2071,6 +2071,13 @@ button {
   }
 }
 
+.scroll-top.clicked {
+  background: var(--accent) !important;
+  color: #fff !important;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 15px rgba(9, 132, 227, 0.3);
+}
+
 @media (max-width: 768px) {
   .scroll-top {
     width: 40px;
