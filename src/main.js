@@ -9,6 +9,7 @@ import { renderServices } from './pages/services.js';
 import { renderPortfolio, initPortfolio } from './pages/portfolio.js';
 import { renderAbout, initAbout } from './pages/about.js';
 import { renderContact, initContact } from './pages/contact.js';
+import { renderScrollTop, initScrollTop } from './components/scrollTop.js';
 
 // Route definitions
 const routes = {
@@ -25,9 +26,11 @@ function mountSharedComponents() {
     document.getElementById('footer-mount').innerHTML = renderFooter();
     document.getElementById('whatsapp-fab').innerHTML = renderWhatsApp();
     document.getElementById('chat-widget').innerHTML = renderChatWidget();
+    document.getElementById('scroll-top-mount').innerHTML = renderScrollTop();
 
     initNavbar();
     initChatWidget();
+    initScrollTop();
 }
 
 // Router
@@ -62,6 +65,9 @@ function navigate() {
     if (route.init) {
         setTimeout(() => route.init(), 100);
     }
+
+    // Re-initialize Scroll Top logic for page-specific behavior (e.g. Contact)
+    initScrollTop();
 
     // Re-observe scroll reveals
     initScrollReveal();
