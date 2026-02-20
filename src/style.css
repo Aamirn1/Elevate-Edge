@@ -420,8 +420,8 @@ button {
 .whatsapp-fab {
   position: fixed;
   bottom: 24px;
-  left: 24px;
-  right: auto;
+  right: calc(100% - 24px - 60px);
+  /* Positioned on left: 24px */
   z-index: 900;
   width: 60px;
   height: 60px;
@@ -431,13 +431,12 @@ button {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  transition: all 0.5s var(--ease);
+  transition: right 0.6s var(--ease), bottom 0.6s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
   cursor: pointer;
   text-decoration: none;
 }
 
 .whatsapp-fab.shifted {
-  left: auto;
   right: 24px;
   bottom: 100px;
 }
@@ -2244,13 +2243,12 @@ button {
     width: 40px;
     height: 40px;
     bottom: 20px;
-    left: 12px;
-    right: auto;
+    right: calc(100% - 12px - 40px);
+    /* Positioned on left: 12px */
     z-index: 1001;
   }
 
   .whatsapp-fab.shifted {
-    left: auto;
     right: 12px;
     bottom: 75px;
   }
