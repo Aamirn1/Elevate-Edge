@@ -419,8 +419,9 @@ button {
 /* ---------- WhatsApp Floating Button ---------- */
 .whatsapp-fab {
   position: fixed;
-  bottom: 100px;
-  right: 24px;
+  bottom: 24px;
+  left: 24px;
+  right: auto;
   z-index: 900;
   width: 60px;
   height: 60px;
@@ -430,9 +431,15 @@ button {
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-  transition: all 0.35s var(--ease);
+  transition: all 0.5s var(--ease);
   cursor: pointer;
   text-decoration: none;
+}
+
+.whatsapp-fab.shifted {
+  left: auto;
+  right: 24px;
+  bottom: 100px;
 }
 
 .whatsapp-fab:hover {
@@ -2236,9 +2243,16 @@ button {
   .whatsapp-fab {
     width: 40px;
     height: 40px;
-    bottom: 75px;
-    right: 12px;
+    bottom: 20px;
+    left: 12px;
+    right: auto;
     z-index: 1001;
+  }
+
+  .whatsapp-fab.shifted {
+    left: auto;
+    right: 12px;
+    bottom: 75px;
   }
 
   .whatsapp-fab i {

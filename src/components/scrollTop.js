@@ -14,9 +14,11 @@ export function initScrollTop() {
         const isContactPage = window.location.hash === '#/contact';
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+        const whatsappFab = document.querySelector('.whatsapp-fab');
+        const isWhatsAppShifted = whatsappFab ? whatsappFab.classList.contains('shifted') : true;
+
         if (isContactPage) {
             // Specialized logic for Contact Page: Show after "Business Hours" (approximate or targeted)
-            // Attempting to find the section by heading content or position
             const contactCards = document.querySelectorAll('.contact-card h4');
             let businessHoursReached = false;
 
@@ -29,14 +31,14 @@ export function initScrollTop() {
                 }
             });
 
-            if (businessHoursReached) {
+            if (businessHoursReached && isWhatsAppShifted) {
                 btn.classList.add('visible');
             } else {
                 btn.classList.remove('visible');
             }
         } else {
-            // Standard logic: Show after 300px
-            if (scrollTop > 300) {
+            // Standard logic: Show only after 300px AND when whatsapp is shifted
+            if (scrollTop > 300 && isWhatsAppShifted) {
                 btn.classList.add('visible');
             } else {
                 btn.classList.remove('visible');

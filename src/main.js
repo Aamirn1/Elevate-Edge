@@ -1,7 +1,7 @@
 import './style.css';
 import { renderNavbar, initNavbar, updateActiveLink } from './components/navbar.js';
 import { renderFooter } from './components/footer.js';
-import { renderWhatsApp } from './components/whatsapp.js';
+import { renderWhatsApp, initWhatsApp } from './components/whatsapp.js';
 import { renderChatWidget, initChatWidget } from './components/chatWidget.js';
 
 import { renderHome, initHome } from './pages/home.js';
@@ -30,6 +30,7 @@ function mountSharedComponents() {
 
     initNavbar();
     initChatWidget();
+    initWhatsApp();
     initScrollTop();
 }
 
