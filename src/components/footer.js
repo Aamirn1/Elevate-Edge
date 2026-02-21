@@ -22,7 +22,7 @@ export function renderFooter() {
             <a href="#/services">Services</a>
             <a href="#/portfolio">Portfolio</a>
             <a href="#/about">About Us</a>
-            <a href="#/contact">Contact</a>
+            <a href="#/career">Careers</a>
           </div>
           <div class="footer-col">
             <h4>Our Services</h4>

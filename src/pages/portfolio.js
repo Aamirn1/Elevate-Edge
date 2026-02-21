@@ -101,7 +101,7 @@ export function renderPortfolio() {
         <h2>Want Results Like These?</h2>
         <p>Let us build a stunning website and run powerful campaigns for your business.</p>
         <a href="#/contact" class="btn btn-primary btn-pulse">
-          <i class="fas fa-hand-pointer"></i> Start Your Project
+          <i class="fas fa-bolt"></i> Boost Now
         </a>
       </div>
     </section>

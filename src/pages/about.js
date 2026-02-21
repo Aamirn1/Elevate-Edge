@@ -1,5 +1,5 @@
 export function renderAbout() {
-    return `
+  return `
     <section class="hero" style="min-height:50vh;padding:160px 0 60px;">
       <div class="hero-bg">
         <div class="hero-shape hero-shape-1"></div>
@@ -105,10 +105,10 @@ export function renderAbout() {
 
     <section class="cta-section">
       <div class="container reveal">
-        <h2>Let's Work Together</h2>
+        <h2>Ready to Elevate Your Business?</h2>
         <p>Ready to take your business to the next level? We'd love to hear from you.</p>
         <a href="#/contact" class="btn btn-primary btn-pulse">
-          <i class="fas fa-envelope"></i> Get in Touch
+          <i class="fas fa-bolt"></i> Boost Now
         </a>
       </div>
     </section>
@@ -116,31 +116,31 @@ export function renderAbout() {
 }
 
 export function initAbout() {
-    // Animate stat counters
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const nums = entry.target.querySelectorAll('.stat-num');
-                nums.forEach(num => {
-                    const target = parseInt(num.getAttribute('data-target'), 10);
-                    if (!target) return;
-                    const suffix = num.textContent.replace(/[0-9]/g, '');
-                    let current = 0;
-                    const increment = Math.ceil(target / 50);
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
-                        num.textContent = current + suffix;
-                    }, 40);
-                });
-                observer.unobserve(entry.target);
+  // Animate stat counters
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const nums = entry.target.querySelectorAll('.stat-num');
+        nums.forEach(num => {
+          const target = parseInt(num.getAttribute('data-target'), 10);
+          if (!target) return;
+          const suffix = num.textContent.replace(/[0-9]/g, '');
+          let current = 0;
+          const increment = Math.ceil(target / 50);
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
             }
+            num.textContent = current + suffix;
+          }, 40);
         });
-    }, { threshold: 0.3 });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
 
-    const statsGrid = document.querySelector('.stats-grid');
-    if (statsGrid) observer.observe(statsGrid);
+  const statsGrid = document.querySelector('.stats-grid');
+  if (statsGrid) observer.observe(statsGrid);
 }
