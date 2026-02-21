@@ -1467,7 +1467,8 @@ button {
 
 .process-steps {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  /* Correct for step circles */
   justify-content: center;
   gap: 0;
   margin-top: 56px;
@@ -1500,36 +1501,9 @@ button {
   position: relative;
   z-index: 1;
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-}
-
-@keyframes float-step {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.step-number {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--gradient-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 20px;
-  box-shadow: 0 0 20px rgba(0, 184, 148, 0.3);
-  position: relative;
-  z-index: 1;
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  opacity: 0.3;
+  /* Start dimmed */
+  transform: scale(0.9);
 }
 
 .process-step:hover .step-number {
@@ -1553,10 +1527,10 @@ button {
   flex: 1;
   height: 2px;
   background: rgba(255, 255, 255, 0.05);
-  /* Very subtle base line */
   min-width: 32px;
   max-width: 80px;
-  margin-bottom: 44px;
+  margin-top: 31px;
+  /* Align with center of 64px step numbers */
   position: relative;
   overflow: hidden;
 }
@@ -1570,20 +1544,6 @@ button {
   width: 0;
   background-image: radial-gradient(circle, var(--primary) 1.5px, transparent 1.5px);
   background-size: 8px 100%;
-  animation: draw-dotted 1s linear forwards;
-}
-
-/* Sequential delays for the "snake" path */
-.process-connector:nth-of-type(1)::after {
-  animation-delay: 0.8s;
-}
-
-.process-connector:nth-of-type(2)::after {
-  animation-delay: 2.3s;
-}
-
-.process-connector:nth-of-type(3)::after {
-  animation-delay: 3.8s;
 }
 
 @keyframes draw-dotted {
@@ -1592,38 +1552,52 @@ button {
   }
 }
 
-/* Step activation glow */
-@keyframes step-pulse {
+@keyframes step-activate {
   0% {
-    transform: scale(1);
-    box-shadow: 0 0 10px rgba(0, 184, 148, 0.2);
+    transform: scale(0.9);
+    opacity: 0.3;
   }
 
   50% {
     transform: scale(1.15);
+    opacity: 1;
     box-shadow: 0 0 30px rgba(0, 184, 148, 0.6);
   }
 
   100% {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(0, 184, 148, 0.4);
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(0, 184, 148, 0.3);
   }
 }
 
-.process-step:nth-of-type(1) .step-number {
-  animation: step-pulse 1s ease forwards 0s;
+/* Sequential triggers linked to .visible from scroll logic */
+.process-step:nth-of-type(1).visible .step-number {
+  animation: step-activate 0.8s var(--ease) forwards 0s;
 }
 
-.process-step:nth-of-type(2) .step-number {
-  animation: step-pulse 1s ease forwards 1.8s;
+.process-connector:nth-of-type(1).visible::after {
+  animation: draw-dotted 0.8s linear forwards 0.8s;
 }
 
-.process-step:nth-of-type(3) .step-number {
-  animation: step-pulse 1s ease forwards 3.3s;
+.process-step:nth-of-type(2).visible .step-number {
+  animation: step-activate 0.8s var(--ease) forwards 1.6s;
 }
 
-.process-step:nth-of-type(4) .step-number {
-  animation: step-pulse 1s ease forwards 4.8s;
+.process-connector:nth-of-type(2).visible::after {
+  animation: draw-dotted 0.8s linear forwards 2.4s;
+}
+
+.process-step:nth-of-type(3).visible .step-number {
+  animation: step-activate 0.8s var(--ease) forwards 3.2s;
+}
+
+.process-connector:nth-of-type(3).visible::after {
+  animation: draw-dotted 0.8s linear forwards 4.0s;
+}
+
+.process-step:nth-of-type(4).visible .step-number {
+  animation: step-activate 0.8s var(--ease) forwards 4.8s;
 }
 
 /* Responsive */
@@ -1634,13 +1608,14 @@ button {
 }
 
 @media (max-width: 600px) {
-  .why-us-grid {
-    grid-template-columns: 1fr;
-  }
-
   .process-steps {
     flex-direction: column;
     gap: 24px;
+    align-items: center;
+  }
+
+  .process-step {
+    max-width: 100%;
   }
 
   .process-connector {
@@ -1648,21 +1623,34 @@ button {
     height: 32px;
     min-width: unset;
     max-width: unset;
+    margin-top: 0;
     margin-bottom: 0;
-    background: rgba(255, 255, 255, 0.05);
   }
 
   .process-connector::after {
     width: 100%;
     height: 0;
     background-size: 100% 8px;
-    animation-name: draw-dotted-v;
+    background-image: radial-gradient(circle, var(--primary) 1.5px, transparent 1.5px);
   }
 
   @keyframes draw-dotted-v {
     to {
       height: 100%;
     }
+  }
+
+  /* Connector Animations Mobile */
+  .process-connector:nth-of-type(1).visible::after {
+    animation: draw-dotted-v 0.8s linear forwards 0.8s;
+  }
+
+  .process-connector:nth-of-type(2).visible::after {
+    animation: draw-dotted-v 0.8s linear forwards 2.4s;
+  }
+
+  .process-connector:nth-of-type(3).visible::after {
+    animation: draw-dotted-v 0.8s linear forwards 4.0s;
   }
 }
 

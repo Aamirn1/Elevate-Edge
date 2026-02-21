@@ -222,7 +222,7 @@ export function renderHome() {
               <p>We start with a free consultation to understand your business, goals, and target audience.</p>
             </div>
           </div>
-          <div class="process-connector"></div>
+          <div class="process-connector reveal"></div>
           <div class="process-step reveal">
             <div class="step-number">02</div>
             <div class="step-content">
@@ -230,7 +230,7 @@ export function renderHome() {
               <p>Our team crafts a tailored digital strategy and presents design concepts for your approval.</p>
             </div>
           </div>
-          <div class="process-connector"></div>
+          <div class="process-connector reveal"></div>
           <div class="process-step reveal">
             <div class="step-number">03</div>
             <div class="step-content">
@@ -238,7 +238,7 @@ export function renderHome() {
               <p>We develop, test, and launch your website or campaign with precision and speed.</p>
             </div>
           </div>
-          <div class="process-connector"></div>
+          <div class="process-connector reveal"></div>
           <div class="process-step reveal">
             <div class="step-number">04</div>
             <div class="step-content">

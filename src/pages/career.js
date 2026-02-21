@@ -30,7 +30,7 @@ export function renderCareer() {
               <p>Explore Google Maps or visit local businesses in your area. Look for brands that need a professional edge or a digital boost.</p>
             </div>
           </div>
-          <div class="process-connector"></div>
+          <div class="process-connector reveal"></div>
           <div class="process-step reveal">
             <div class="step-number">02</div>
             <div class="step-content">
@@ -38,7 +38,7 @@ export function renderCareer() {
               <p>Show them the ElevateEdge portfolio. Demonstrate how our premium designs and strategies can double their growth. </p>
             </div>
           </div>
-          <div class="process-connector"></div>
+          <div class="process-connector reveal"></div>
           <div class="process-step reveal">
             <div class="step-number">03</div>
             <div class="step-content">
@@ -46,7 +46,7 @@ export function renderCareer() {
               <p>Negotiate your own pricing. For example, if a client agrees to $200 for a service, you keep the profit margin you set.</p>
             </div>
           </div>
-          <div class="process-connector"></div>
+          <div class="process-connector reveal"></div>
           <div class="process-step reveal">
             <div class="step-number">04</div>
             <div class="step-content">
