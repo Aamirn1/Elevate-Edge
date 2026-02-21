@@ -57,7 +57,7 @@ export function renderNavbar() {
           <a href="#/services" data-page="services">Services</a>
           <a href="#/portfolio" data-page="portfolio">Portfolio</a>
           <a href="#/about" data-page="about">About Us</a>
-          <a href="#/contact" data-page="contact">Contact</a>
+          <a href="#/career" data-page="career">Careers</a>
           <a href="#/contact" class="nav-cta">Boost Now</a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">

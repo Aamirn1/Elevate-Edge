@@ -8,9 +8,9 @@ export function renderContact() {
       </div>
       <div class="container">
         <div class="hero-content">
-          <div class="hero-badge"><i class="fas fa-envelope"></i> Contact Us</div>
-          <h1><span class="gradient-text">Let's Start a</span><br>Conversation</h1>
-          <p class="hero-sub">Have a project in mind? Fill out the form below or reach out directly — we'd love to hear from you!</p>
+          <div class="hero-badge"><i class="fas fa-bolt"></i> Boost Your Business</div>
+          <h1><span class="gradient-text">Submit Your</span><br>Project Details</h1>
+          <p class="hero-sub">Provide the details of your project or your client's requirements below. We'll review the submission and reach out within 24 hours to get started.</p>
         </div>
       </div>
     </section>
@@ -19,7 +19,7 @@ export function renderContact() {
       <div class="container">
         <div class="contact-grid">
           <div class="contact-form reveal-left">
-            <h3 style="margin-bottom:24px;font-size:1.3rem;">Send Us a Message</h3>
+            <h3 style="margin-bottom:24px;font-size:1.3rem;">Project Submission Form</h3>
             <form id="contact-form">
               <input type="hidden" name="_subject" value="New Submission from ElevateEdge Contact Form" />
               <div class="form-group">
@@ -69,11 +69,11 @@ export function renderContact() {
                 <input type="text" id="c-budget" name="budget" placeholder="e.g. $150 - $1,000" />
               </div>
               <div class="form-group">
-                <label for="c-msg">Your Message (Please include your WhatsApp Number)</label>
-                <textarea id="c-msg" name="message" placeholder="Tell us about your project or ask us anything..." required></textarea>
+                <label for="c-msg">Project Description & Requirements (Include Client Name/WhatsApp if acting on their behalf)</label>
+                <textarea id="c-msg" name="message" placeholder="Tell us about the project goals, requirements, or any specific instructions..." required></textarea>
               </div>
               <button type="submit" class="btn btn-primary btn-pulse form-submit">
-                <i class="fas fa-paper-plane"></i> Send Message
+                <i class="fas fa-bolt"></i> Boost Now
               </button>
             </form>
             <div id="form-success" style="display:none;text-align:center;padding:40px 20px;">

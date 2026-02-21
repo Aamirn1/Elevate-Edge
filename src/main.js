@@ -9,6 +9,7 @@ import { renderServices } from './pages/services.js';
 import { renderPortfolio, initPortfolio } from './pages/portfolio.js';
 import { renderAbout, initAbout } from './pages/about.js';
 import { renderContact, initContact } from './pages/contact.js';
+import { renderCareer, initCareer } from './pages/career.js';
 import { renderScrollTop, initScrollTop } from './components/scrollTop.js';
 
 // Route definitions
@@ -17,7 +18,8 @@ const routes = {
     '/services': { render: renderServices, init: null, title: 'Services' },
     '/portfolio': { render: renderPortfolio, init: initPortfolio, title: 'Portfolio' },
     '/about': { render: renderAbout, init: initAbout, title: 'About Us' },
-    '/contact': { render: renderContact, init: initContact, title: 'Contact' },
+    '/contact': { render: renderContact, init: initContact, title: 'Boost Now' },
+    '/career': { render: renderCareer, init: initCareer, title: 'Careers' },
 };
 
 // Mount shared components (once)
