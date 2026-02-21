@@ -1571,34 +1571,35 @@ button {
   }
 }
 
-/* Sequential triggers linked to .visible from scroll logic */
-.process-step:nth-of-type(1).visible .step-number {
+/* Sequential triggers linked to PARENT .process-steps.visible */
+.process-steps.visible .process-step:nth-of-type(1) .step-number {
   animation: step-activate 0.8s var(--ease) forwards 0s;
 }
 
-.process-connector:nth-of-type(1).visible::after {
+.process-steps.visible .process-connector:nth-of-type(1)::after {
   animation: draw-dotted 0.8s linear forwards 0.8s;
 }
 
-.process-step:nth-of-type(2).visible .step-number {
+.process-steps.visible .process-step:nth-of-type(2) .step-number {
   animation: step-activate 0.8s var(--ease) forwards 1.6s;
 }
 
-.process-connector:nth-of-type(2).visible::after {
+.process-steps.visible .process-connector:nth-of-type(2)::after {
   animation: draw-dotted 0.8s linear forwards 2.4s;
 }
 
-.process-step:nth-of-type(3).visible .step-number {
+.process-steps.visible .process-step:nth-of-type(3) .step-number {
   animation: step-activate 0.8s var(--ease) forwards 3.2s;
 }
 
-.process-connector:nth-of-type(3).visible::after {
+.process-steps.visible .process-connector:nth-of-type(3)::after {
   animation: draw-dotted 0.8s linear forwards 4.0s;
 }
 
-.process-step:nth-of-type(4).visible .step-number {
+.process-steps.visible .process-step:nth-of-type(4) .step-number {
   animation: step-activate 0.8s var(--ease) forwards 4.8s;
 }
+
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -1640,16 +1641,16 @@ button {
     }
   }
 
-  /* Connector Animations Mobile */
-  .process-connector:nth-of-type(1).visible::after {
+  /* Connector Animations Mobile triggered by parent */
+  .process-steps.visible .process-connector:nth-of-type(1)::after {
     animation: draw-dotted-v 0.8s linear forwards 0.8s;
   }
 
-  .process-connector:nth-of-type(2).visible::after {
+  .process-steps.visible .process-connector:nth-of-type(2)::after {
     animation: draw-dotted-v 0.8s linear forwards 2.4s;
   }
 
-  .process-connector:nth-of-type(3).visible::after {
+  .process-steps.visible .process-connector:nth-of-type(3)::after {
     animation: draw-dotted-v 0.8s linear forwards 4.0s;
   }
 }
@@ -1663,7 +1664,6 @@ button {
 
 .trust-divider {
   display: none;
-}
 }
 
 /* ---------- Scroll Animations ---------- */

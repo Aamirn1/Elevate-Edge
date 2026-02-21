@@ -214,7 +214,7 @@ export function renderHome() {
           <h2>How We <span class="gradient-text">Work</span></h2>
           <p>A simple, transparent process designed to get you results fast.</p>
         </div>
-        <div class="process-steps">
+        <div class="process-steps reveal">
           <div class="process-step reveal">
             <div class="step-number">01</div>
             <div class="step-content">

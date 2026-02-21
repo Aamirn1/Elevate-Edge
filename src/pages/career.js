@@ -22,7 +22,7 @@ export function renderCareer() {
           <p>We've designed a simple, professional model where you act as the bridge between local businesses and elite digital services.</p>
         </div>
         
-        <div class="process-steps" style="gap: 60px 0;">
+        <div class="process-steps reveal" style="gap: 60px 0;">
           <div class="process-step reveal">
             <div class="step-number">01</div>
             <div class="step-content">
