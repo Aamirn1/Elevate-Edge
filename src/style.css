@@ -202,6 +202,23 @@ button {
 
 .btn-pulse {
   animation: pulse-glow 2s ease-in-out infinite;
+  border: 1px solid rgba(0, 184, 148, 0.3);
+}
+
+.footer .btn-pulse {
+  display: inline-block;
+  margin-top: 15px;
+  background: var(--gradient-primary);
+  color: #fff !important;
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 184, 148, 0.4);
+}
+
+.footer .btn-pulse:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 184, 148, 0.6);
 }
 
 /* ---------- Navbar ---------- */
@@ -1572,31 +1589,31 @@ button {
 }
 
 /* Sequential triggers linked to PARENT .process-steps.visible */
-.process-steps.visible .process-step:nth-of-type(1) .step-number {
+.process-steps.visible>div:nth-child(1) .step-number {
   animation: step-activate 0.8s var(--ease) forwards 0s;
 }
 
-.process-steps.visible .process-connector:nth-of-type(1)::after {
+.process-steps.visible>div:nth-child(2)::after {
   animation: draw-dotted 0.8s linear forwards 0.8s;
 }
 
-.process-steps.visible .process-step:nth-of-type(2) .step-number {
+.process-steps.visible>div:nth-child(3) .step-number {
   animation: step-activate 0.8s var(--ease) forwards 1.6s;
 }
 
-.process-steps.visible .process-connector:nth-of-type(2)::after {
+.process-steps.visible>div:nth-child(4)::after {
   animation: draw-dotted 0.8s linear forwards 2.4s;
 }
 
-.process-steps.visible .process-step:nth-of-type(3) .step-number {
+.process-steps.visible>div:nth-child(5) .step-number {
   animation: step-activate 0.8s var(--ease) forwards 3.2s;
 }
 
-.process-steps.visible .process-connector:nth-of-type(3)::after {
+.process-steps.visible>div:nth-child(6)::after {
   animation: draw-dotted 0.8s linear forwards 4.0s;
 }
 
-.process-steps.visible .process-step:nth-of-type(4) .step-number {
+.process-steps.visible>div:nth-child(7) .step-number {
   animation: step-activate 0.8s var(--ease) forwards 4.8s;
 }
 
