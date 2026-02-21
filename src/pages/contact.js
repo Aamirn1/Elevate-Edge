@@ -51,6 +51,8 @@ export function renderContact() {
                   </div>
                   <div class="options-container" id="services-options">
                     <div class="option" data-value="web-design">Website Design & Dev</div>
+                    <div class="option" data-value="app-dev">App Development</div>
+                    <div class="option" data-value="saas">SaaS Solutions</div>
                     <div class="option" data-value="marketing">Digital Marketing & Ads</div>
                     <div class="option" data-value="social">Social Media Management</div>
                     <div class="option" data-value="seo">SEO Optimization</div>

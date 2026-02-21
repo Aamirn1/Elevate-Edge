@@ -80,15 +80,11 @@ export function renderHome() {
     <section class="trust-bar">
       <div class="container">
         <div class="trust-bar-inner">
+          <div class="trust-item"><i class="fas fa-mobile-alt"></i><span>Mobile App Development</span></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><i class="fas fa-cogs"></i><span>SaaS Solutions</span></div>
+          <div class="trust-divider"></div>
           <div class="trust-item"><i class="fas fa-globe"></i><span>Web Design &amp; Development</span></div>
-          <div class="trust-divider"></div>
-          <div class="trust-item"><i class="fas fa-bullhorn"></i><span>Digital Marketing &amp; Ads</span></div>
-          <div class="trust-divider"></div>
-          <div class="trust-item"><i class="fas fa-hashtag"></i><span>Social Media Management</span></div>
-          <div class="trust-divider"></div>
-          <div class="trust-item"><i class="fas fa-search"></i><span>SEO Optimization</span></div>
-          <div class="trust-divider"></div>
-          <div class="trust-item"><i class="fas fa-paint-brush"></i><span>Brand Identity Design</span></div>
         </div>
       </div>
     </section>
@@ -129,6 +125,26 @@ export function renderHome() {
               <li><i class="fas fa-check-circle"></i> Content creation & scheduling</li>
               <li><i class="fas fa-check-circle"></i> Community engagement</li>
               <li><i class="fas fa-check-circle"></i> Analytics & reporting</li>
+            </ul>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>App Development</h3>
+            <p>Premium mobile applications for iOS & Android built for performance and user engagement.</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Native-like Experience</li>
+              <li><i class="fas fa-check-circle"></i> Custom UI/UX Design</li>
+              <li><i class="fas fa-check-circle"></i> Cross-platform Growth</li>
+            </ul>
+          </div>
+          <div class="service-card reveal">
+            <div class="service-icon"><i class="fas fa-cogs"></i></div>
+            <h3>SaaS Solutions</h3>
+            <p>Custom cloud-based business software designed to automate and scale your operations.</p>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> Workflow Automation</li>
+              <li><i class="fas fa-check-circle"></i> Scalable Infrastructure</li>
+              <li><i class="fas fa-check-circle"></i> Data Management</li>
             </ul>
           </div>
           <div class="service-card reveal">

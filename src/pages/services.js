@@ -92,6 +92,42 @@ export function renderServices() {
             </div>
           </div>
 
+          <!-- App Development -->
+          <div class="service-detail-card reveal">
+            <div class="service-detail-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div>
+              <h3>App Development for Business</h3>
+              <p>We design and develop premium iOS and Android applications that provide a seamless mobile experience for your customers. From intuitive user interfaces to powerful backend integrations, we build apps that drive engagement and growth.</p>
+              <ul>
+                <li><i class="fas fa-check-circle" style="color:var(--primary);margin-right:8px;"></i> Custom iOS & Android development</li>
+                <li><i class="fas fa-check-circle" style="color:var(--primary);margin-right:8px;"></i> Native-like hybrid app solutions</li>
+                <li><i class="fas fa-check-circle" style="color:var(--primary);margin-right:8px;"></i> Premium UI/UX mobile design</li>
+                <li><i class="fas fa-check-circle" style="color:var(--primary);margin-right:8px;"></i> API & database integration</li>
+                <li><i class="fas fa-check-circle" style="color:var(--primary);margin-right:8px;"></i> App store deployment & support</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- SaaS Development -->
+          <div class="service-detail-card reveal">
+            <div class="service-detail-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <div>
+              <h3>Software Development (SAAS)</h3>
+              <p>Build scalable, cloud-based software solutions tailored for business management. We specialize in creating custom SaaS platforms that automate workflows, manage data efficiently, and scale as your business grows.</p>
+              <ul>
+                <li><i class="fas fa-check-circle" style="color:var(--primary);margin-right:8px;"></i> Custom SaaS platform architecture</li>
+                <li><i class="fas fa-check-circle" style="color:var(--primary);margin-right:8px;"></i> Workflow automation & tools</li>
+                <li><i class="fas fa-check-circle" style="color:var(--primary);margin-right:8px;"></i> Scalable cloud infrastructure</li>
+                <li><i class="fas fa-check-circle" style="color:var(--primary);margin-right:8px;"></i> Advanced data analytics & reporting</li>
+                <li><i class="fas fa-check-circle" style="color:var(--primary);margin-right:8px;"></i> Multi-tenant security & management</li>
+              </ul>
+            </div>
+          </div>
+
           <!-- Chat Support -->
           <div class="service-detail-card reveal">
             <div class="service-detail-icon">
