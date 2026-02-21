@@ -85,6 +85,10 @@ export function renderHome() {
           <div class="trust-item"><i class="fas fa-cogs"></i><span>SaaS Solutions</span></div>
           <div class="trust-divider"></div>
           <div class="trust-item"><i class="fas fa-globe"></i><span>Web Design &amp; Development</span></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><i class="fas fa-hashtag"></i><span>Social Media Management</span></div>
+          <div class="trust-divider"></div>
+          <div class="trust-item"><i class="fas fa-bullhorn"></i><span>Digital Marketing &amp; Ads</span></div>
         </div>
       </div>
     </section>
