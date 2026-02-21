@@ -1369,7 +1369,7 @@ button {
 /* ---------- Why Choose Us ---------- */
 .why-us-section {
   padding: var(--section-pad) 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 184, 148, 0.03) 50%, transparent 100%);
+  background: var(--bg-surface);
 }
 
 .why-us-grid {
