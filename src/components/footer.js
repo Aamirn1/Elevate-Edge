@@ -30,7 +30,7 @@ export function renderFooter() {
             <a href="#/services">Digital Marketing</a>
             <a href="#/services">Social Media</a>
             <a href="#/services">Chat Support</a>
-            <a href="#/contact" class="btn-pulse" style="text-align:center;"><i class="fas fa-bolt"></i> Boost Now</a>
+            <a href="#/contact" class="footer-cta" style="text-align:center;"><i class="fas fa-bolt"></i> Boost Now</a>
           </div>
           <div class="footer-col">
             <h4>Get in Touch</h4>
