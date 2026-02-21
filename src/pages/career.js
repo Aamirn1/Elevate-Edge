@@ -89,10 +89,10 @@ export function renderCareer() {
             </div>
           </div>
           <div class="about-visual reveal-right">
-             <div class="contact-card" style="background:var(--bg-card);padding:clamp(30px, 5vw, 60px);border:1px solid var(--border);border-radius:var(--radius-lg);text-align:center;">
+             <div class="contact-card" style="background:var(--bg-card);padding:clamp(30px, 5vw, 60px);border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;flex-direction:column;align-items:center;text-align:center;">
                <h3 style="margin-bottom:20px;font-size:1.5rem;">Ready to Onboard?</h3>
-               <p style="margin-bottom:32px;line-height:1.8;">Message us to get our official rate card and start your journey as an ElevateEdge Associate. Our team is ready to support your first deal.</p>
-               <a href="https://wa.me/923205719979" target="_blank" class="btn btn-primary btn-pulse" style="background:#25D366;width:100%;max-width:300px;margin:0 auto;justify-content:center;padding:18px;">
+               <p style="margin-bottom:32px;line-height:1.8;width:100%;">Message us to get our official rate card and start your journey as an ElevateEdge Associate. Our team is ready to support your first deal.</p>
+               <a href="https://wa.me/923205719979" target="_blank" class="btn btn-primary btn-pulse" style="background:#25D366;width:100%;max-width:280px;justify-content:center;padding:18px;margin-top:auto;">
                  <i class="fab fa-whatsapp"></i> Chat With Onboarding
                </a>
              </div>
