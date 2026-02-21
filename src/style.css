@@ -1500,7 +1500,6 @@ button {
   position: relative;
   z-index: 1;
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-  animation: float-step 4s ease-in-out infinite;
 }
 
 @keyframes float-step {
@@ -1515,37 +1514,26 @@ button {
   }
 }
 
-/* Staggered animation delays for steps */
-.process-step:nth-child(1) .step-number {
-  animation-delay: 0s;
-}
-
-.process-step:nth-child(2) .step-number {
-  animation-delay: 0.5s;
-}
-
-.process-step:nth-child(3) .step-number {
-  animation-delay: 1s;
-}
-
-.process-step:nth-child(4) .step-number {
-  animation-delay: 1.5s;
-}
-
-.process-step:nth-child(5) .step-number {
-  animation-delay: 2s;
-}
-
-.process-step:nth-child(6) .step-number {
-  animation-delay: 2.5s;
-}
-
-.process-step:nth-child(7) .step-number {
-  animation-delay: 3s;
+.step-number {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0, 184, 148, 0.3);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
 .process-step:hover .step-number {
-  transform: scale(1.1) translateY(-8px);
+  transform: scale(1.1);
   box-shadow: 0 0 30px rgba(0, 184, 148, 0.5);
 }
 
@@ -1564,12 +1552,78 @@ button {
 .process-connector {
   flex: 1;
   height: 2px;
-  background: linear-gradient(to right, var(--primary), var(--secondary));
-  opacity: 0.3;
+  background: rgba(255, 255, 255, 0.05);
+  /* Very subtle base line */
   min-width: 32px;
   max-width: 80px;
   margin-bottom: 44px;
-  /* Align with step numbers */
+  position: relative;
+  overflow: hidden;
+}
+
+.process-connector::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-image: radial-gradient(circle, var(--primary) 1.5px, transparent 1.5px);
+  background-size: 8px 100%;
+  animation: draw-dotted 1s linear forwards;
+}
+
+/* Sequential delays for the "snake" path */
+.process-connector:nth-of-type(1)::after {
+  animation-delay: 0.8s;
+}
+
+.process-connector:nth-of-type(2)::after {
+  animation-delay: 2.3s;
+}
+
+.process-connector:nth-of-type(3)::after {
+  animation-delay: 3.8s;
+}
+
+@keyframes draw-dotted {
+  to {
+    width: 100%;
+  }
+}
+
+/* Step activation glow */
+@keyframes step-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(0, 184, 148, 0.2);
+  }
+
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 30px rgba(0, 184, 148, 0.6);
+  }
+
+  100% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 184, 148, 0.4);
+  }
+}
+
+.process-step:nth-of-type(1) .step-number {
+  animation: step-pulse 1s ease forwards 0s;
+}
+
+.process-step:nth-of-type(2) .step-number {
+  animation: step-pulse 1s ease forwards 1.8s;
+}
+
+.process-step:nth-of-type(3) .step-number {
+  animation: step-pulse 1s ease forwards 3.3s;
+}
+
+.process-step:nth-of-type(4) .step-number {
+  animation: step-pulse 1s ease forwards 4.8s;
 }
 
 /* Responsive */
@@ -1595,19 +1649,33 @@ button {
     min-width: unset;
     max-width: unset;
     margin-bottom: 0;
-    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    background: rgba(255, 255, 255, 0.05);
   }
 
-  .trust-bar-inner {
-    justify-content: flex-start;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 4px;
+  .process-connector::after {
+    width: 100%;
+    height: 0;
+    background-size: 100% 8px;
+    animation-name: draw-dotted-v;
   }
 
-  .trust-divider {
-    display: none;
+  @keyframes draw-dotted-v {
+    to {
+      height: 100%;
+    }
   }
+}
+
+.trust-bar-inner {
+  justify-content: flex-start;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  padding-bottom: 4px;
+}
+
+.trust-divider {
+  display: none;
+}
 }
 
 /* ---------- Scroll Animations ---------- */
