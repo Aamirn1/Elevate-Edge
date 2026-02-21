@@ -1,5 +1,5 @@
 export function renderCareer() {
-    return `
+  return `
     <section class="hero" style="min-height:50vh;padding:160px 0 60px;">
       <div class="hero-bg">
         <div class="hero-shape hero-shape-1"></div>
@@ -15,14 +15,14 @@ export function renderCareer() {
       </div>
     </section>
 
-    <section class="career-model-section">
+    <section class="career-model-section career-section">
       <div class="container">
         <div class="section-header reveal">
           <h2>Earn While You <span class="gradient-text">Help Others Grow</span></h2>
           <p>We've designed a simple, professional model where you act as the bridge between local businesses and elite digital services.</p>
         </div>
         
-        <div class="process-steps">
+        <div class="process-steps" style="gap: 32px 0;">
           <div class="process-step reveal">
             <div class="step-number">01</div>
             <div class="step-content">
@@ -58,14 +58,14 @@ export function renderCareer() {
       </div>
     </section>
 
-    <section class="career-benefits">
+    <section class="career-benefits career-section" style="background:var(--bg-surface);">
       <div class="container">
-        <div class="about-grid">
+        <div class="about-grid" style="gap: clamp(40px, 8vw, 100px);">
           <div class="about-text reveal-left">
             <h2>Why Partner With <span class="gradient-text">ElevateEdge?</span></h2>
-            <p>We provide the technical expertise, you provide the connection. It's a win-win partnership built on quality and trust.</p>
+            <p style="margin-bottom: 40px;">We provide the technical expertise, you provide the connection. It's a win-win partnership built on quality and trust.</p>
             
-            <div class="about-values">
+            <div class="about-values" style="gap: 24px;">
               <div class="value-card">
                 <i class="fas fa-wallet"></i>
                 <h4>Unlimited Earnings</h4>
@@ -89,10 +89,10 @@ export function renderCareer() {
             </div>
           </div>
           <div class="about-visual reveal-right">
-             <div class="contact-card" style="background:var(--bg-surface);padding:40px;border:1px solid var(--border);">
-               <h3 style="margin-bottom:16px;">Ready to Onboard?</h3>
-               <p style="margin-bottom:24px;">Message us to get our official rate card and start your journey as an ElevateEdge Associate.</p>
-               <a href="https://wa.me/923205719979" target="_blank" class="btn btn-primary btn-pulse" style="background:#25D366;width:100%;justify-content:center;">
+             <div class="contact-card" style="background:var(--bg-card);padding:clamp(30px, 5vw, 60px);border:1px solid var(--border);border-radius:var(--radius-lg);">
+               <h3 style="margin-bottom:20px;font-size:1.5rem;">Ready to Onboard?</h3>
+               <p style="margin-bottom:32px;line-height:1.8;">Message us to get our official rate card and start your journey as an ElevateEdge Associate. Our team is ready to support your first deal.</p>
+               <a href="https://wa.me/923205719979" target="_blank" class="btn btn-primary btn-pulse" style="background:#25D366;width:100%;justify-content:center;padding:18px;">
                  <i class="fab fa-whatsapp"></i> Chat With Onboarding
                </a>
              </div>
@@ -114,5 +114,5 @@ export function renderCareer() {
 }
 
 export function initCareer() {
-    // Any specific initialization for the career page can go here
+  // Any specific initialization for the career page can go here
 }
