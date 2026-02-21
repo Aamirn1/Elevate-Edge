@@ -278,7 +278,7 @@ export function renderHome() {
         <h2>Ready to Elevate Your Business?</h2>
         <p>Contact us today and let's build something amazing together.</p>
         <a href="#/contact" class="btn btn-primary btn-pulse" style="margin-top:8px;">
-          <i class="fas fa-gift"></i> Get a Free Quote
+          <i class="fas fa-bolt"></i> Boost Now
         </a>
       </div>
     </section>
