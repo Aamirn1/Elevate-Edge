@@ -1449,6 +1449,17 @@ button {
   line-height: 1.7;
 }
 
+/* ---------- Career Specific Spacing ---------- */
+.career-section {
+  padding: 160px 0;
+  /* Expanded padding for premium feel */
+}
+
+.career-model-section {
+  background: var(--bg-body);
+  /* Ensure background is defined for expansion */
+}
+
 /* ---------- How We Work (Process) ---------- */
 .process-section {
   padding: var(--section-pad) 0;

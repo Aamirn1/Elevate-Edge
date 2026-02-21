@@ -17,12 +17,12 @@ export function renderCareer() {
 
     <section class="career-model-section career-section">
       <div class="container">
-        <div class="section-header reveal">
+        <div class="section-header reveal" style="margin-bottom: 80px;">
           <h2>Earn While You <span class="gradient-text">Help Others Grow</span></h2>
           <p>We've designed a simple, professional model where you act as the bridge between local businesses and elite digital services.</p>
         </div>
         
-        <div class="process-steps" style="gap: 32px 0;">
+        <div class="process-steps" style="gap: 60px 0;">
           <div class="process-step reveal">
             <div class="step-number">01</div>
             <div class="step-content">
@@ -60,7 +60,7 @@ export function renderCareer() {
 
     <section class="career-benefits career-section" style="background:var(--bg-surface);">
       <div class="container">
-        <div class="about-grid" style="gap: clamp(40px, 8vw, 100px);">
+        <div class="about-grid" style="gap: clamp(60px, 10vw, 120px); align-items: flex-start;">
           <div class="about-text reveal-left">
             <h2>Why Partner With <span class="gradient-text">ElevateEdge?</span></h2>
             <p style="margin-bottom: 40px;">We provide the technical expertise, you provide the connection. It's a win-win partnership built on quality and trust.</p>
