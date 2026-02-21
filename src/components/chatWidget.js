@@ -1,13 +1,13 @@
 const responses = {
   greeting: "Hello! 👋 Welcome to ElevateEdge Digital. How can we help your business today?",
   services: "We offer:\n• Custom Website Development\n• Digital Marketing & Ads\n• Social Media Management\n• 24/7 Smart Chat Support\n\nWhich service interests you?",
-  website: "We build stunning, responsive websites tailored to your industry — retail, food, professional services, and more! Our packages start at very affordable rates. Would you like a free quote?",
+  website: "We build stunning, responsive websites tailored to your industry — retail, food, professional services, and more! Our packages start at very affordable rates. Ready to Boost your presence?",
   marketing: "Our digital marketing team runs data-driven campaigns on Google Ads, Facebook & Instagram to maximize your ROI. We offer budget-friendly packages that deliver real results! 📈",
   social: "We handle everything — content calendars, graphics, scheduling & engagement. Your social media presence will be managed by experts who know how to grow your audience! 🚀",
-  pricing: "Our packages are designed to be budget-friendly! We believe every business deserves a great online presence. Contact us for a custom quote tailored to your needs.",
-  contact: "You can reach us via:\n• WhatsApp: +92 320 571 9979\n• Email: helpingbusinessesgrowth@gmail.com\n• Or fill out our contact form!\n\nWe'd love to hear from you! 💬",
-  quote: "Great choice! 🎉 Please visit our Contact page or message us on WhatsApp at +92 320 571 9979 to get your free, no-obligation quote.",
-  default: "Thanks for your message! I'd love to help. You can ask about our services, pricing, or how to get started. For detailed inquiries, connect with our team on WhatsApp! 😊"
+  pricing: "Our packages are designed to be budget-friendly! We believe every business deserves a great online presence. Contact us for a custom project proposal tailored to your needs.",
+  contact: "You can reach us via:\n• WhatsApp: +92 320 571 9979\n• Email: helpingbusinessesgrowth@gmail.com\n• Or fill out our Boost Now form!\n\nWe'd love to hear from you! 💬",
+  quote: "Great choice! 🎉 Please visit our Boost Now page or message us on WhatsApp at +92 320 571 9979 to get your custom project roadmap started.",
+  default: "Thanks for your message! I'd love to help. You can ask about our services, careers, or how to get started. For detailed inquiries, connect with our team on WhatsApp! 😊"
 };
 
 function getResponse(message) {
