@@ -1500,10 +1500,52 @@ button {
   position: relative;
   z-index: 1;
   transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  animation: float-step 4s ease-in-out infinite;
+}
+
+@keyframes float-step {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Staggered animation delays for steps */
+.process-step:nth-child(1) .step-number {
+  animation-delay: 0s;
+}
+
+.process-step:nth-child(2) .step-number {
+  animation-delay: 0.5s;
+}
+
+.process-step:nth-child(3) .step-number {
+  animation-delay: 1s;
+}
+
+.process-step:nth-child(4) .step-number {
+  animation-delay: 1.5s;
+}
+
+.process-step:nth-child(5) .step-number {
+  animation-delay: 2s;
+}
+
+.process-step:nth-child(6) .step-number {
+  animation-delay: 2.5s;
+}
+
+.process-step:nth-child(7) .step-number {
+  animation-delay: 3s;
 }
 
 .process-step:hover .step-number {
-  transform: scale(1.1);
+  transform: scale(1.1) translateY(-8px);
   box-shadow: 0 0 30px rgba(0, 184, 148, 0.5);
 }
 
