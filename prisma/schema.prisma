@@ -1,0 +1,48 @@
+// ElevateEdge Digital – Prisma schema
+// learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  tags        String   @default("[]") // JSON-encoded array of strings
+  image       String
+  url         String
+  sortOrder   Int?     @map("sort_order")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("projects")
+}
+
+model Order {
+  id           Int      @id @default(autoincrement())
+  clientName   String   @map("client_name")
+  clientEmail  String   @map("client_email")
+  inviteCode   String?  @map("invite_code")
+  status       String   @default("pending")
+  businessType String?  @map("business_type")
+  services     String?
+  budget       String?
+  message      String
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("orders")
+}
+
+model Partner {
+  id          Int      @id @default(autoincrement())
+  contactInfo String   @unique @map("contact_info")
+  inviteCode  String   @unique @map("invite_code")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("partners")
+}

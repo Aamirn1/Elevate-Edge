@@ -1,0 +1,642 @@
+     1→import { supabase } from '../services/supabaseClient.js';
+     2→import fetchedProjects from '../data/projects.json';
+     3→
+     4→export function renderAdmin() {
+     5→  return `
+     6→    <section class="admin-section" style="padding:160px 0 60px; min-height: 100vh; background: var(--bg-body);">
+     7→      <div class="container">
+     8→        <div class="admin-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+     9→          <h2>Admin <span class="gradient-text">Dashboard</span></h2>
+    10→          <a href="#/" class="btn btn-outline" style="padding: 8px 16px;"><i class="fas fa-sign-out-alt"></i> Exit Admin</a>
+    11→        </div>
+    12→
+    13→
+    14→        <div class="admin-grid" style="display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start;">
+    15→          <!-- Left Sidebar: Tab Navigation & Form -->
+    16→          <div class="admin-sidebar" style="display: flex; flex-direction: column; gap: 24px;">
+    17→            <!-- Tab Navigation -->
+    18→            <div class="admin-tabs" style="display: flex; flex-direction: column; gap: 10px; background: var(--bg-card); padding: 20px; border-radius: var(--radius-lg); border: 1px solid var(--border);">
+    19→              <button class="btn admin-tab-btn active" data-tab="projects" style="width:100%; justify-content:flex-start; transform:none; transition: all 0.3s ease;">
+    20→                <i class="fas fa-project-diagram"></i> Manage Projects
+    21→              </button>
+    22→              <button class="btn admin-tab-btn" data-tab="orders" style="width:100%; justify-content:flex-start; transform:none; transition: all 0.3s ease; background:transparent; border:1px solid transparent; color:var(--text-muted);">
+    23→                <i class="fas fa-clipboard-list"></i> Order Tracking
+    24→              </button>
+    25→              <button class="btn admin-tab-btn" data-tab="partners" style="width:100%; justify-content:flex-start; transform:none; transition: all 0.3s ease; background:transparent; border:1px solid transparent; color:var(--text-muted);">
+    26→                <i class="fas fa-users-cog"></i> Registered Partners
+    27→              </button>
+    28→            </div>
+    29→
+    30→            <!-- Add/Edit Form Card -->
+    31→            <div class="admin-form-card" style="background: var(--bg-card); padding: 30px; border-radius: var(--radius-lg); border: 1px solid var(--border);">
+    32→              <h3 id="admin-form-title" style="margin-bottom: 20px;">Add New Project</h3>
+    33→              <form id="project-form">
+    34→                <input type="hidden" id="p-id" />
+    35→                
+    36→                <div class="form-group">
+    37→                  <label>Project Title</label>
+    38→                  <input type="text" id="p-title" class="form-control" placeholder="e.g. Modern UI Kit" required style="width:100%; padding:12px; margin-top:8px; margin-bottom:16px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff; border-radius: var(--radius-md);" />
+    39→                </div>
+    40→                
+    41→                <div class="form-group">
+    42→                  <label>Premium Sub-line (Description)</label>
+    43→                  <textarea id="p-desc" class="form-control" required rows="3" placeholder="Describe the project value..." style="width:100%; padding:12px; margin-top:8px; margin-bottom:16px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff; border-radius: var(--radius-md);"></textarea>
+    44→                </div>
+    45→
+    46→                <div class="form-group">
+    47→                  <label>Tags (Comma separated)</label>
+    48→                  <input type="text" id="p-tags" placeholder="e.g. E-commerce, Premium, Web Design" class="form-control" required style="width:100%; padding:12px; margin-top:8px; margin-bottom:16px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff; border-radius: var(--radius-md);" />
+    49→                </div>
+    50→
+    51→                <div class="form-group">
+    52→                  <label>Project Image</label>
+    53→                  <div style="margin-top:8px; margin-bottom:8px;">
+    54→                    <label for="p-image-file" class="btn btn-outline" style="padding:10px 16px; cursor:pointer; display:inline-flex; align-items:center; gap:8px; font-size:0.9rem;">
+    55→                      <i class="fas fa-cloud-upload-alt"></i> Upload Image
+    56→                    </label>
+    57→                    <input type="file" id="p-image-file" accept="image/*" style="display:none;" />
+    58→                    <span id="p-image-filename" style="margin-left:12px; font-size:0.82rem; color:#a0a0a0;">No file chosen</span>
+    59→                  </div>
+    60→                  <div id="p-image-preview" style="display:none; margin-bottom:12px; border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border);">
+    61→                    <img id="p-image-preview-img" src="" alt="Preview" style="width:100%; max-height:180px; object-fit:cover;" />
+    62→                  </div>
+    63→                  <input type="text" id="p-image" placeholder="Or paste an image URL directly" class="form-control" required style="width:100%; padding:12px; margin-bottom:16px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff; border-radius: var(--radius-md);" />
+    64→                  <p style="font-size:0.75rem; color:#a0a0a0; margin-top:-12px; margin-bottom:16px;">Auto-filled via upload.</p>
+    65→                </div>
+    66→
+    67→                <div class="form-group">
+    68→                  <label>Website URL</label>
+    69→                  <input type="url" id="p-url" placeholder="https://..." class="form-control" required style="width:100%; padding:12px; margin-top:8px; margin-bottom:16px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff; border-radius: var(--radius-md);" />
+    70→                </div>
+    71→
+    72→                <div class="form-group">
+    73→                  <label>Display Sequence</label>
+    74→                  <input type="number" id="p-sort" placeholder="e.g. 1, 2, 3..." class="form-control" min="1" required style="width:100%; padding:12px; margin-top:8px; margin-bottom:8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: #fff; border-radius: var(--radius-md);" />
+    75→                  <p style="font-size:0.75rem; color:#a0a0a0; margin-bottom:24px;">Lower number = appears first in portfolio slider.</p>
+    76→                </div>
+    77→
+    78→                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;"><i class="fas fa-save"></i> Save Project</button>
+    79→                <button type="button" id="p-cancel" class="btn btn-outline" style="width:100%; justify-content:center; margin-top: 12px; display: none;">Cancel Edit</button>
+    80→              </form>
+    81→            </div>
+    82→          </div>
+    83→
+    84→          <!-- Main Content Area -->
+    85→          <div class="admin-main-content">
+    86→            <!-- Projects View -->
+    87→            <div id="projects-view" class="admin-tab-content active">
+    88→              <div class="admin-list-card" style="background: var(--bg-surface); padding: 30px; border-radius: var(--radius-lg); border: 1px solid var(--border);">
+    89→                <h3 style="margin-bottom: 20px;">Manage Projects (<span id="p-count">0</span>)</h3>
+    90→                <div id="admin-projects-list" style="display: flex; flex-direction: column; gap: 15px;">
+    91→                  <div style="text-align:center; padding: 40px;"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+    92→                </div>
+    93→              </div>
+    94→            </div>
+    95→
+    96→            <!-- Orders View -->
+    97→            <div id="orders-view" class="admin-tab-content" style="display: none;">
+    98→              <div class="admin-list-card" style="background: var(--bg-surface); padding: 30px; border-radius: var(--radius-lg); border: 1px solid var(--border);">
+    99→                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+   100→                  <h3 style="margin:0;">Order Tracking (<span id="o-count">0</span>)</h3>
+   101→                  <div class="search-box" style="position:relative; width:250px;">
+   102→                    <i class="fas fa-search" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text-muted); font-size:0.9rem;"></i>
+   103→                    <input type="text" id="order-search" placeholder="Search client email..." style="width:100%; padding:8px 12px 8px 35px; background:rgba(255,255,255,0.05); border:1px solid var(--border); border-radius:var(--radius-md); color:#fff; font-size:0.85rem;" />
+   104→                  </div>
+   105→                </div>
+   106→                <div id="admin-orders-list" style="display: flex; flex-direction: column; gap: 15px;">
+   107→                  <div style="text-align:center; padding: 40px;"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+   108→                </div>
+   109→              </div>
+   110→            </div>
+   111→            <!-- Partners View -->
+   112→            <div id="partners-view" class="admin-tab-content" style="display: none;">
+   113→              <div class="admin-list-card" style="background: var(--bg-surface); padding: 30px; border-radius: var(--radius-lg); border: 1px solid var(--border);">
+   114→                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+   115→                  <h3 style="margin:0;">Registered Partners (<span id="p-partner-count">0</span>)</h3>
+   116→                </div>
+   117→                <div id="admin-partners-list" style="display: flex; flex-direction: column; gap: 15px;">
+   118→                  <div style="text-align:center; padding: 40px;"><i class="fas fa-spinner fa-spin"></i> Loading Partners...</div>
+   119→                </div>
+   120→              </div>
+   121→            </div>
+   122→          </div>
+   123→        </div>
+   124→
+   125→      </div>
+   126→    </section>
+   127→  `;
+   128→}
+   129→
+   130→export function initAdmin() {
+   131→  const form = document.getElementById('project-form');
+   132→  const cancelBtn = document.getElementById('p-cancel');
+   133→  const formTitle = document.getElementById('admin-form-title');
+   134→  const listContainer = document.getElementById('admin-projects-list');
+   135→  const countDisplay = document.getElementById('p-count');
+   136→  
+   137→  const ordersListContainer = document.getElementById('admin-orders-list');
+   138→  const ordersCountDisplay = document.getElementById('o-count');
+   139→  const orderSearchInput = document.getElementById('order-search');
+   140→
+   141→  const partnersListContainer = document.getElementById('admin-partners-list');
+   142→  const partnersCountDisplay = document.getElementById('p-partner-count');
+   143→
+   144→  // Session Check
+   145→  const isAdminLoggedIn = localStorage.getItem('admin_logged_in') === 'true';
+   146→  if (!isAdminLoggedIn) {
+   147→    window.location.hash = '#/';
+   148→    return;
+   149→  }
+   150→
+   151→  if (!form || !listContainer) return;
+   152→
+   153→  // Tab Management
+   154→  const tabBtns = document.querySelectorAll('.admin-tab-btn');
+   155→  const tabContents = document.querySelectorAll('.admin-tab-content');
+   156→  const sidebarForm = document.querySelector('.admin-sidebar');
+   157→
+   158→  tabBtns.forEach(btn => {
+   159→    btn.addEventListener('click', () => {
+   160→      const targetTab = btn.dataset.tab;
+   161→      
+   162→      tabBtns.forEach(b => {
+   163→        b.classList.remove('active', 'btn-primary');
+   164→        b.classList.add('btn-outline');
+   165→        b.style.background = 'transparent';
+   166→        b.style.borderColor = 'transparent';
+   167→        b.style.color = 'var(--text-muted)';
+   168→      });
+   169→      
+   170→      btn.classList.add('active', 'btn-primary');
+   171→      btn.classList.remove('btn-outline', 'btn-secondary');
+   172→      btn.style.background = '';
+   173→      btn.style.borderColor = '';
+   174→      btn.style.color = '#fff';
+   175→
+   176→      tabContents.forEach(content => {
+   177→        content.style.display = content.id === `${targetTab}-view` ? 'block' : 'none';
+   178→      });
+   179→
+   180→      if (targetTab === 'orders') loadOrders();
+   181→      if (targetTab === 'projects') loadProjects();
+   182→      if (targetTab === 'partners') loadPartners();
+   183→
+   184→      // Show/hide sidebar form based on tab
+   185→      const formCard = document.querySelector('.admin-form-card');
+   186→      if (formCard) {
+   187→        formCard.style.display = (targetTab === 'projects') ? 'block' : 'none';
+   188→      }
+   189→    });
+   190→  });
+   191→
+   192→  // Logout Handler
+   193→  const logoutBtn = document.querySelector('a[href="#/"]');
+   194→  if (logoutBtn) {
+   195→    logoutBtn.addEventListener('click', () => {
+   196→      localStorage.removeItem('admin_logged_in');
+   197→    });
+   198→  }
+   199→
+   200→  // Re-apply styles to initial active tab
+   201→  const activeTab = document.querySelector('.admin-tab-btn.active');
+   202→  if (activeTab) {
+   203→    activeTab.classList.add('btn-primary');
+   204→    activeTab.style.color = '#fff';
+   205→  }
+   206→
+   207→  // Image Upload Handler
+   208→  const fileInput = document.getElementById('p-image-file');
+   209→  const filenameSpan = document.getElementById('p-image-filename');
+   210→  const previewContainer = document.getElementById('p-image-preview');
+   211→  const previewImg = document.getElementById('p-image-preview-img');
+   212→  const imageUrlInput = document.getElementById('p-image');
+   213→
+   214→  if (fileInput) {
+   215→    fileInput.addEventListener('change', async () => {
+   216→      const file = fileInput.files[0];
+   217→      if (!file) return;
+   218→
+   219→      filenameSpan.textContent = file.name;
+   220→
+   221→      // Show local preview immediately
+   222→      const reader = new FileReader();
+   223→      reader.onload = (e) => {
+   224→        previewImg.src = e.target.result;
+   225→        previewContainer.style.display = 'block';
+   226→      };
+   227→      reader.readAsDataURL(file);
+   228→
+   229→      // Upload to Supabase Storage
+   230→      filenameSpan.textContent = 'Uploading...';
+   231→      try {
+   232→        const ext = file.name.split('.').pop();
+   233→        const fileName = `project-${Date.now()}.${ext}`;
+   234→
+   235→        const { data, error } = await supabase.storage
+   236→          .from('project-images')
+   237→          .upload(fileName, file, { cacheControl: '3600', upsert: false });
+   238→
+   239→        if (error) throw error;
+   240→
+   241→        // Get public URL
+   242→        const { data: urlData } = supabase.storage
+   243→          .from('project-images')
+   244→          .getPublicUrl(fileName);
+   245→
+   246→        imageUrlInput.value = urlData.publicUrl;
+   247→        filenameSpan.textContent = '✅ ' + file.name;
+   248→      } catch (err) {
+   249→        console.error('Upload failed:', err);
+   250→        filenameSpan.textContent = '❌ Upload failed - paste URL manually';
+   251→        alert('Image upload failed. Make sure the "project-images" bucket exists in Supabase Storage and is set to Public. You can still paste an image URL manually.');
+   252→      }
+   253→    });
+   254→  }
+   255→
+   256→  async function loadProjects() {
+   257→    try {
+   258→      // Try with sort_order first, fall back to created_at if column doesn't exist
+   259→      let data, error;
+   260→      const res1 = await supabase.from('projects').select('*').order('sort_order', { ascending: true, nullsFirst: false }).order('created_at', { ascending: true });
+   261→      if (res1.error && res1.error.message && res1.error.message.includes('sort_order')) {
+   262→        const res2 = await supabase.from('projects').select('*').order('created_at', { ascending: true });
+   263→        data = res2.data;
+   264→        error = res2.error;
+   265→      } else {
+   266→        data = res1.data;
+   267→        error = res1.error;
+   268→      }
+   269→      if (error) throw error;
+   270→      
+   271→      countDisplay.textContent = data.length;
+   272→      
+   273→      if (data.length === 0) {
+   274→        listContainer.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:20px;">No projects found in database. <br><br> <button id="auto-import-btn" class="btn btn-primary btn-pulse">Load Initial Projects</button></p>';
+   275→        
+   276→        setTimeout(() => {
+   277→          const btn = document.getElementById('auto-import-btn');
+   278→          if (btn) {
+   279→            btn.onclick = async () => {
+   280→              btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+   281→              btn.disabled = true;
+   282→              try {
+   283→                // remove "name" because db doesn't have it
+   284→                const toInsert = fetchedProjects.map((p, idx) => ({
+   285→                  title: p.title,
+   286→                  description: p.description,
+   287→                  tags: p.tags,
+   288→                  image: p.image,
+   289→                  url: p.url,
+   290→                  sort_order: idx + 1
+   291→                }));
+   292→                const { error: insErr } = await supabase.from('projects').insert(toInsert);
+   293→                if (insErr) throw insErr;
+   294→                loadProjects();
+   295→              } catch (err) {
+   296→                alert('Error importing existing initial projects. See console.');
+   297→                console.error(err);
+   298→              }
+   299→            };
+   300→          }
+   301→        }, 100);
+   302→
+   303→        return;
+   304→      }
+   305→
+   306→      listContainer.innerHTML = data.map(p => `
+   307→        <div class="admin-project-item" style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-card); padding:16px; border-radius:var(--radius-md); border:1px solid var(--border);">
+   308→          <div style="display:flex; align-items:center; gap: 16px;">
+   309→            <div style="min-width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;">${p.sort_order || '-'}</div>
+   310→            <img src="${p.image}" alt="${p.title}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;" onerror="this.src='/vite.svg'" />
+   311→            <div>
+   312→              <h4 style="margin: 0 0 4px 0; font-size: 1.1rem;">${p.title}</h4>
+   313→              <p style="margin: 0; font-size: 0.8rem; color: var(--text-muted);">${p.url}</p>
+   314→            </div>
+   315→          </div>
+   316→          <div style="display:flex; gap: 10px;">
+   317→            <button class="btn btn-outline edit-btn" data-id="${p.id}" style="padding: 6px 12px; font-size: 0.8rem;"><i class="fas fa-edit"></i> Edit</button>
+   318→            <button class="btn btn-outline delete-btn" data-id="${p.id}" style="padding: 6px 12px; font-size: 0.8rem; color: #ff7675; border-color: rgba(255, 118, 117, 0.3);"><i class="fas fa-trash"></i> Delete</button>
+   319→          </div>
+   320→        </div>
+   321→      `).join('');
+   322→
+   323→      // Bind Edit/Delete
+   324→      document.querySelectorAll('.edit-btn').forEach(btn => {
+   325→        btn.addEventListener('click', () => {
+   326→          const project = data.find(item => item.id == btn.dataset.id);
+   327→          if (project) {
+   328→            document.getElementById('p-id').value = project.id;
+   329→            document.getElementById('p-title').value = project.title;
+   330→            document.getElementById('p-desc').value = project.description;
+   331→            document.getElementById('p-tags').value = Array.isArray(project.tags) ? project.tags.join(', ') : project.tags;
+   332→            document.getElementById('p-image').value = project.image;
+   333→            document.getElementById('p-url').value = project.url;
+   334→            document.getElementById('p-sort').value = project.sort_order || '';
+   335→            
+   336→            formTitle.textContent = 'Edit Project';
+   337→            cancelBtn.style.display = 'flex';
+   338→            window.scrollTo({ top: 40, behavior: 'smooth' });
+   339→          }
+   340→        });
+   341→      });
+   342→
+   343→      document.querySelectorAll('.delete-btn').forEach(btn => {
+   344→        btn.addEventListener('click', async () => {
+   345→          if (confirm('Are you sure you want to delete this project?')) {
+   346→            const btnEl = btn;
+   347→            btnEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+   348→            const { error } = await supabase.from('projects').delete().eq('id', btn.dataset.id);
+   349→            if (error) {
+   350→              alert('Error deleting project');
+   351→              console.error(error);
+   352→            } else {
+   353→              loadProjects();
+   354→            }
+   355→          }
+   356→        });
+   357→      });
+   358→
+   359→    } catch (err) {
+   360→      console.error('Failed to load projects:', err);
+   361→      listContainer.innerHTML = '<p style="color:#ff7675;text-align:center;padding:20px;">Error loading projects. Check console.</p>';
+   362→    }
+   363→  }
+   364→
+   365→  async function loadOrders() {
+   366→    try {
+   367→      ordersListContainer.innerHTML = '<div style="text-align:center; padding: 40px;"><i class="fas fa-spinner fa-spin"></i> Loading Orders...</div>';
+   368→      
+   369→      const { data: orders, error: orderErr } = await supabase
+   370→        .from('orders')
+   371→        .select('*')
+   372→        .order('created_at', { ascending: false });
+   373→
+   374→      if (orderErr) throw orderErr;
+   375→
+   376→      // Fetch all partners to match details locally (faster than one-by-one queries)
+   377→      const { data: partners } = await supabase.from('partners').select('invite_code, contact_info');
+   378→      
+   379→      const searchTerm = orderSearchInput.value.toLowerCase().trim();
+   380→      const filteredOrders = orders.filter(o => !searchTerm || (o.client_email && o.client_email.toLowerCase().includes(searchTerm)));
+   381→
+   382→      ordersCountDisplay.textContent = filteredOrders.length;
+   383→
+   384→      if (filteredOrders.length === 0) {
+   385→        ordersListContainer.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:20px;">No orders matched your search.</p>';
+   386→        return;
+   387→      }
+   388→
+   389→      const statusOptions = ['pending', 'contact', 'meeting', 'order', 'complete'];
+   390→
+   391→      ordersListContainer.innerHTML = filteredOrders.map(o => {
+   392→        const partner = partners.find(p => p.invite_code === o.invite_code);
+   393→        const date = new Date(o.created_at).toLocaleString(); // Use toLocaleString for better date/time visibility
+   394→        
+   395→        return `
+   396→          <div class="admin-order-item" style="background:var(--bg-card); border-radius:var(--radius-md); border:1px solid var(--border); overflow:hidden; transition: all 0.3s ease;">
+   397→             <!-- Header: Visible by default and clickable -->
+   398→             <div class="order-header" data-id="${o.id}" style="padding:20px; display:grid; grid-template-columns: 1.5fr 1fr 1.5fr 150px 30px; gap:15px; align-items:center; cursor:pointer; user-select:none;">
+   399→               <div>
+   400→                 <h4 style="margin:0 0 5px; font-size:1rem; color:#fff;">${o.client_name || 'N/A'}</h4>
+   401→                 <p style="margin:0; font-size:0.82rem; color:var(--primary);">${o.client_email}</p>
+   402→                 <span style="font-size:0.7rem; color:var(--text-muted);">${date}</span>
+   403→               </div>
+   404→               
+   405→               <div>
+   406→                 <span style="display:block; font-size:0.7rem; color:var(--text-muted); margin-bottom:4px;">Invitation Code</span>
+   407→                 <code style="background:rgba(255,255,255,0.05); padding:3px 6px; border-radius:4px; font-size:0.8rem; color:var(--primary);">${o.invite_code || 'Direct'}</code>
+   408→               </div>
+   409→
+   410→               <div>
+   411→                 <span style="display:block; font-size:0.7rem; color:var(--text-muted); margin-bottom:4px;">Partner Contact</span>
+   412→                 ${partner ? `
+   413→                   <div style="display:flex; align-items:center; gap:8px;">
+   414→                     <i class="fab fa-${partner.contact_info.includes('linkedin.com') ? 'linkedin' : 'whatsapp'}" style="color:var(--primary); font-size:0.85rem;"></i>
+   415→                     <span style="font-size:0.8rem; color:#fff;">${partner.contact_info}</span>
+   416→                   </div>
+   417→                 ` : '<span style="font-size:0.8rem; color:var(--text-muted);">No partner match</span>'}
+   418→               </div>
+   419→
+   420→               <div style="text-align:right;">
+   421→                  <select class="status-selector" data-id="${o.id}" style="background:rgba(255,255,255,0.05); color:#fff; border:1px solid var(--border); padding:5px 8px; border-radius:var(--radius-md); font-size:0.75rem; cursor:pointer; width:100%;">
+   422→                    ${statusOptions.map(s => `<option value="${s}" ${o.status === s ? 'selected' : ''}>${s.charAt(0).toUpperCase() + s.slice(1)}</option>`).join('')}
+   423→                  </select>
+   424→               </div>
+   425→
+   426→               <div style="text-align:center;">
+   427→                  <i class="fas fa-chevron-down toggle-icon" style="color:var(--text-muted); transition: transform 0.3s ease;"></i>
+   428→               </div>
+   429→             </div>
+   430→
+   431→             <!-- Detailed sections: Hidden by default -->
+   432→             <div class="order-details-body" id="details-${o.id}" style="display:none; padding:0 20px 20px; border-top:1px solid var(--border); background:rgba(255,255,255,0.01);">
+   433→                <div class="order-details-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap:15px; padding-top:15px;">
+   434→                   <div>
+   435→                     <span style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Business Type</span>
+   436→                     <span style="font-size:0.85rem; color:#fff;">${o.business_type || 'Not specified'}</span>
+   437→                   </div>
+   438→                   <div>
+   439→                     <span style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Budget (USD)</span>
+   440→                     <span style="font-size:0.85rem; color:var(--primary); font-weight:600;">${o.budget || 'Not specified'}</span>
+   441→                   </div>
+   442→                   <div>
+   443→                     <span style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:4px;">Services Requested</span>
+   444→                     <span style="font-size:0.85rem; color:#fff;">${o.services ? o.services.split(',').join(', ') : 'Not specified'}</span>
+   445→                   </div>
+   446→                </div>
+   447→
+   448→                <div style="margin-top:20px; background:rgba(255,255,255,0.02); padding:12px; border-radius:var(--radius-md); border:1px solid var(--border);">
+   449→                   <span style="display:block; font-size:0.75rem; color:var(--text-muted); margin-bottom:6px;">Full Requirements & Message</span>
+   450→                   <p style="margin:0; font-size:0.85rem; color:#fff; line-height:1.6; white-space:pre-wrap;">${o.message || 'No message provided'}</p>
+   451→                </div>
+   452→             </div>
+   453→          </div>
+   454→        `;
+   455→      }).join('');
+   456→
+   457→      // Bind Accordion Toggle
+   458→      document.querySelectorAll('.order-header').forEach(header => {
+   459→        header.addEventListener('click', (e) => {
+   460→          // Don't toggle if clicking the select or within a link if any
+   461→          if (e.target.tagName.toLowerCase() === 'select' || e.target.closest('.status-selector')) return;
+   462→          
+   463→          const orderId = header.dataset.id;
+   464→          const details = document.getElementById(`details-${orderId}`);
+   465→          const icon = header.querySelector('.toggle-icon');
+   466→          
+   467→          if (details.style.display === 'none') {
+   468→            details.style.display = 'block';
+   469→            icon.style.transform = 'rotate(180deg)';
+   470→            header.closest('.admin-order-item').style.borderColor = 'var(--primary)';
+   471→          } else {
+   472→            details.style.display = 'none';
+   473→            icon.style.transform = 'rotate(0deg)';
+   474→            header.closest('.admin-order-item').style.borderColor = 'var(--border)';
+   475→          }
+   476→        });
+   477→      });
+   478→
+   479→      // Bind Status Updates
+   480→      document.querySelectorAll('.status-selector').forEach(select => {
+   481→        select.addEventListener('change', async (e) => {
+   482→          const orderId = e.target.dataset.id;
+   483→          const newStatus = e.target.value;
+   484→          
+   485→          e.target.style.opacity = '0.5';
+   486→          e.target.disabled = true;
+   487→
+   488→          try {
+   489→            const { error } = await supabase
+   490→              .from('orders')
+   491→              .update({ status: newStatus })
+   492→              .eq('id', parseInt(orderId));
+   493→
+   494→            if (error) throw error;
+   495→            
+   496→            e.target.style.borderColor = 'var(--primary)';
+   497→            // Show a small success toast if possible, but for now just restore opacity
+   498→          } catch (err) {
+   499→            console.error('Failed to update status:', err);
+   500→            alert('Error updating status. See console.');
+   501→            e.target.style.borderColor = '#ff7675';
+   502→          } finally {
+   503→            e.target.style.opacity = '1';
+   504→            e.target.disabled = false;
+   505→          }
+   506→        });
+   507→      });
+   508→
+   509→    } catch (err) {
+   510→      console.error('Failed to load orders:', err);
+   511→      ordersListContainer.innerHTML = '<p style="color:#ff7675;text-align:center;padding:20px;">Error loading orders. Check console.</p>';
+   512→    }
+   513→  }
+   514→
+   515→  // Bind Search
+   516→  let searchTimeout;
+   517→  if (orderSearchInput) {
+   518→    orderSearchInput.addEventListener('input', () => {
+   519→      clearTimeout(searchTimeout);
+   520→      searchTimeout = setTimeout(loadOrders, 300);
+   521→    });
+   522→  }
+   523→
+   524→  form.addEventListener('submit', async (e) => {
+   525→    e.preventDefault();
+   526→    const id = document.getElementById('p-id').value;
+   527→    const projectData = {
+   528→      title: document.getElementById('p-title').value,
+   529→      description: document.getElementById('p-desc').value,
+   530→      tags: document.getElementById('p-tags').value.split(',').map(s => s.trim()),
+   531→      image: document.getElementById('p-image').value,
+   532→      url: document.getElementById('p-url').value,
+   533→      sort_order: parseInt(document.getElementById('p-sort').value) || 1,
+   534→    };
+   535→
+   536→    const submitBtn = form.querySelector('button[type="submit"]');
+   537→    const originalText = submitBtn.innerHTML;
+   538→    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+   539→    submitBtn.disabled = true;
+   540→
+   541→    try {
+   542→      if (id) {
+   543→        // Update
+   544→        const { error } = await supabase.from('projects').update(projectData).eq('id', id);
+   545→        if (error) throw error;
+   546→      } else {
+   547→        // Insert
+   548→        const { error } = await supabase.from('projects').insert([projectData]);
+   549→        if (error) throw error;
+   550→      }
+   551→
+   552→      form.reset();
+   553→      document.getElementById('p-id').value = '';
+   554→      formTitle.textContent = 'Add New Project';
+   555→      cancelBtn.style.display = 'none';
+   556→      await loadProjects();
+   557→    } catch (err) {
+   558→      console.error('Error saving:', err);
+   559→      alert('Error saving project to Supabase.');
+   560→    } finally {
+   561→      submitBtn.innerHTML = originalText;
+   562→      submitBtn.disabled = false;
+   563→    }
+   564→  });
+   565→
+   566→  cancelBtn.addEventListener('click', () => {
+   567→    form.reset();
+   568→    document.getElementById('p-id').value = '';
+   569→    formTitle.textContent = 'Add New Project';
+   570→    cancelBtn.style.display = 'none';
+   571→  });
+   572→
+   573→  loadProjects();
+   574→  loadOrders();
+   575→
+   576→  // Real-time Subscriptions
+   577→  const ordersChannel = supabase
+   578→    .channel('admin-orders-realtime')
+   579→    .on('postgres_changes', { event: '*', table: 'orders' }, () => {
+   580→      loadOrders();
+   581→    })
+   582→    .subscribe();
+   583→
+   584→  const partnersChannel = supabase
+   585→    .channel('admin-partners-realtime')
+   586→    .on('postgres_changes', { event: '*', table: 'partners' }, () => {
+   587→      loadPartners();
+   588→    })
+   589→    .subscribe();
+   590→}
+   591→
+   592→async function loadPartners() {
+   593→  const partnersListContainer = document.getElementById('admin-partners-list');
+   594→  const partnersCountDisplay = document.getElementById('p-partner-count');
+   595→  if (!partnersListContainer) return;
+   596→
+   597→  try {
+   598→    partnersListContainer.innerHTML = '<div style="text-align:center; padding: 40px;"><i class="fas fa-spinner fa-spin"></i> Loading Partners...</div>';
+   599→    
+   600→    const { data: partners, error } = await supabase
+   601→      .from('partners')
+   602→      .select('*')
+   603→      .order('created_at', { ascending: false });
+   604→
+   605→    if (error) throw error;
+   606→
+   607→    partnersCountDisplay.textContent = partners.length;
+   608→
+   609→    if (partners.length === 0) {
+   610→      partnersListContainer.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:20px;">No partners registered yet.</p>';
+   611→      return;
+   612→    }
+   613→
+   614→    partnersListContainer.innerHTML = partners.map(p => {
+   615→      const date = new Date(p.created_at).toLocaleDateString();
+   616→      return `
+   617→        <div class="admin-partner-item" style="background:var(--bg-card); border-radius:var(--radius-md); border:1px solid var(--border); padding:20px; display:grid; grid-template-columns: 1fr 1fr 1.5fr; gap:15px; align-items:center;">
+   618→          <div>
+   619→            <span style="display:block; font-size:0.7rem; color:var(--text-muted); margin-bottom:4px;">Registered Date</span>
+   620→            <span style="font-size:0.85rem; color:#fff;">${date}</span>
+   621→          </div>
+   622→          <div>
+   623→            <span style="display:block; font-size:0.7rem; color:var(--text-muted); margin-bottom:4px;">Invitation Code</span>
+   624→            <code style="background:rgba(255,255,255,0.05); padding:3px 6px; border-radius:4px; font-size:0.9rem; color:var(--primary); font-weight:bold;">${p.invite_code}</code>
+   625→          </div>
+   626→          <div>
+   627→            <span style="display:block; font-size:0.7rem; color:var(--text-muted); margin-bottom:4px;">Contact Information</span>
+   628→            <div style="display:flex; align-items:center; gap:8px;">
+   629→              <i class="fab fa-${p.contact_info.includes('linkedin.com') ? 'linkedin' : 'whatsapp'}" style="color:var(--primary); font-size:1rem;"></i>
+   630→              <span style="font-size:0.9rem; color:#fff;">${p.contact_info}</span>
+   631→            </div>
+   632→          </div>
+   633→        </div>
+   634→      `;
+   635→    }).join('');
+   636→
+   637→  } catch (err) {
+   638→    console.error('Error loading partners:', err);
+   639→    partnersListContainer.innerHTML = '<p style="color:#e74c3c;text-align:center;padding:20px;">Failed to load partners.</p>';
+   640→  }
+   641→}
+   642→
