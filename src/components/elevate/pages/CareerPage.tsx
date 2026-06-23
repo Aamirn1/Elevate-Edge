@@ -160,9 +160,9 @@ export function CareerPage({ onNavigate }: CareerPageProps) {
           className="career-model-section career-section contact-section"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,184,148,0.04) 0%, var(--bg) 100%)",
-            borderTop: "1px solid rgba(0,184,148,0.15)",
-            borderBottom: "1px solid rgba(0,184,148,0.15)",
+              "linear-gradient(180deg, rgba(168, 85, 247,0.04) 0%, var(--bg) 100%)",
+            borderTop: "1px solid rgba(168, 85, 247,0.15)",
+            borderBottom: "1px solid rgba(168, 85, 247,0.15)",
           }}
         >
           <div className="container">
@@ -221,10 +221,10 @@ export function CareerPage({ onNavigate }: CareerPageProps) {
                   <div
                     className="form-group"
                     style={{
-                      background: "rgba(0, 184, 148, 0.05)",
+                      background: "rgba(168, 85, 247, 0.05)",
                       padding: "15px",
                       borderRadius: "var(--radius-md)",
-                      border: "1px dashed rgba(0, 184, 148, 0.3)",
+                      border: "1px dashed rgba(168, 85, 247, 0.3)",
                     }}
                   >
                     <p
@@ -380,7 +380,7 @@ export function CareerPage({ onNavigate }: CareerPageProps) {
                 </p>
                 <div
                   style={{
-                    background: "rgba(0, 184, 148, 0.1)",
+                    background: "rgba(168, 85, 247, 0.1)",
                     border: "1px dashed var(--primary)",
                     padding: "15px",
                     borderRadius: "var(--radius-md)",

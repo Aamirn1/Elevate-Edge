@@ -52,7 +52,10 @@ export function Footer({ onNavigate }: FooterProps) {
                 Services
               </a>
               <a href="#/portfolio" onClick={(e) => handleNav(e, "/portfolio")}>
-                Portfolio
+                Testimonials
+              </a>
+              <a href="#/pricing" onClick={(e) => handleNav(e, "/pricing")}>
+                Pricing
               </a>
               <a href="#/about" onClick={(e) => handleNav(e, "/about")}>
                 About Us
@@ -85,9 +88,9 @@ export function Footer({ onNavigate }: FooterProps) {
               >
                 <i className="fab fa-whatsapp"></i> +92 320 571 9979
               </a>
-              <a href="mailto:helpingbusinessesgrowth@gmail.com">
+              <a href="mailto:elevateedgedigitalagency@gmail.com">
                 <i className="fas fa-envelope"></i>{" "}
-                helpingbusinessesgrowth@gmail.com
+                elevateedgedigitalagency@gmail.com
               </a>
               <a href="#/contact" onClick={(e) => handleNav(e, "/contact")}>
                 <i className="fas fa-map-marker-alt"></i> Available Worldwide

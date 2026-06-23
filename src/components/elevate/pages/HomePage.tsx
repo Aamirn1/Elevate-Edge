@@ -155,14 +155,14 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 <i className="fas fa-bolt"></i> Get Started
               </a>
               <a
-                href="#/services"
+                href="#/pricing"
                 className="btn btn-outline"
                 onClick={(e) => {
                   e.preventDefault();
-                  onNavigate("/services");
+                  onNavigate("/pricing");
                 }}
               >
-                <i className="fas fa-th-large"></i> Our Services
+                <i className="fas fa-tags"></i> View Pricing
               </a>
             </div>
             <div className="hero-stats">
@@ -186,6 +186,10 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </div>
             </div>
           </div>
+        </div>
+        <div className="hero-scroll-indicator" aria-hidden="true">
+          <div className="mouse"></div>
+          <span>Scroll</span>
         </div>
       </section>
 
@@ -459,7 +463,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                         <span
                           key={idx}
                           style={{
-                            background: "rgba(0,184,148,0.12)",
+                            background: "rgba(168, 85, 247,0.12)",
                             color: "var(--primary-light)",
                             padding: "4px 12px",
                             borderRadius: "20px",

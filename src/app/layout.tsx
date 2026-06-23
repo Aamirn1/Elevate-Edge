@@ -28,6 +28,11 @@ export const metadata: Metadata = {
     "Web Development",
   ],
   authors: [{ name: "ElevateEdge Digital" }],
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "ElevateEdge Digital Agency – Strategic Growth & Premium Web Solutions",
     description:

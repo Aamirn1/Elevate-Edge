@@ -16,11 +16,6 @@ export function ScrollTop({ currentPath }: ScrollTopProps) {
       const scrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
-      const whatsappFab = document.querySelector(".whatsapp-fab");
-      const isWhatsAppShifted = whatsappFab
-        ? whatsappFab.classList.contains("shifted")
-        : true;
-
       if (isContactPage) {
         const contactCards = document.querySelectorAll(".contact-card h4");
         let businessHoursReached = false;
@@ -32,17 +27,9 @@ export function ScrollTop({ currentPath }: ScrollTopProps) {
             }
           }
         });
-        if (businessHoursReached && isWhatsAppShifted) {
-          setVisible(true);
-        } else {
-          setVisible(false);
-        }
+        setVisible(businessHoursReached);
       } else {
-        if (scrollTop > 300 && isWhatsAppShifted) {
-          setVisible(true);
-        } else {
-          setVisible(false);
-        }
+        setVisible(scrollTop > 300);
       }
     };
 

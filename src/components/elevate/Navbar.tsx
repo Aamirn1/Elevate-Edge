@@ -10,7 +10,8 @@ interface NavbarProps {
 const navLinks = [
   { href: "/", label: "Home", page: "home" },
   { href: "/services", label: "Services", page: "services" },
-  { href: "/portfolio", label: "Portfolio", page: "portfolio" },
+  { href: "/portfolio", label: "Testimonials", page: "portfolio" },
+  { href: "/pricing", label: "Pricing", page: "pricing" },
   { href: "/about", label: "About Us", page: "about" },
   { href: "/career", label: "Careers", page: "career" },
 ];
@@ -25,6 +26,21 @@ export function Navbar({ currentPath, onNavigate }: NavbarProps) {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Lock body scroll + hide WhatsApp FAB when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.classList.add("menu-open");
+    } else {
+      document.body.style.overflow = "";
+      document.body.classList.remove("menu-open");
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.classList.remove("menu-open");
+    };
+  }, [menuOpen]);
 
   const handleNav = (e: React.MouseEvent, path: string) => {
     e.preventDefault();
@@ -58,8 +74,8 @@ export function Navbar({ currentPath, onNavigate }: NavbarProps) {
                       y2="85"
                       gradientUnits="userSpaceOnUse"
                     >
-                      <stop stopColor="#00b894" />
-                      <stop offset="1" stopColor="#0984e3" />
+                      <stop stopColor="#a855f7" />
+                      <stop offset="1" stopColor="#ec4899" />
                     </linearGradient>
                     <linearGradient
                       id="shine_grad"

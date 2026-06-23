@@ -144,7 +144,7 @@ export function PortfolioPage({ onNavigate }: PortfolioPageProps) {
                         <span
                           key={idx}
                           style={{
-                            background: "rgba(0,184,148,0.12)",
+                            background: "rgba(168, 85, 247,0.12)",
                             color: "var(--primary-light)",
                             padding: "4px 12px",
                             borderRadius: "20px",

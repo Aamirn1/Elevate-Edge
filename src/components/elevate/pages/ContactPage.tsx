@@ -272,10 +272,10 @@ export function ContactPage() {
                 <div
                   className="form-group"
                   style={{
-                    background: "rgba(0, 184, 148, 0.05)",
+                    background: "rgba(168, 85, 247, 0.05)",
                     padding: "15px",
                     borderRadius: "var(--radius-md)",
-                    border: "1px dashed rgba(0, 184, 148, 0.3)",
+                    border: "1px dashed rgba(168, 85, 247, 0.3)",
                   }}
                 >
                   <label htmlFor="c-invite" style={{ color: "var(--primary)" }}>
@@ -374,7 +374,7 @@ export function ContactPage() {
                 <div>
                   <h4>Email Us</h4>
                   <p>
-                    helpingbusinessesgrowth@gmail.com
+                    elevateedgedigitalagency@gmail.com
                     <br />
                     <span style={{ fontSize: "0.82rem", opacity: 0.7 }}>
                       We reply within 24 hours

@@ -4,7 +4,6 @@ import { useEffect, useSyncExternalStore } from "react";
 import { Navbar } from "@/components/elevate/Navbar";
 import { Footer } from "@/components/elevate/Footer";
 import { WhatsAppFab } from "@/components/elevate/WhatsAppFab";
-import { ChatWidget } from "@/components/elevate/ChatWidget";
 import { ScrollTop } from "@/components/elevate/ScrollTop";
 import { HomePage } from "@/components/elevate/pages/HomePage";
 import { ServicesPage } from "@/components/elevate/pages/ServicesPage";
@@ -12,15 +11,17 @@ import { PortfolioPage } from "@/components/elevate/pages/PortfolioPage";
 import { AboutPage } from "@/components/elevate/pages/AboutPage";
 import { ContactPage } from "@/components/elevate/pages/ContactPage";
 import { CareerPage } from "@/components/elevate/pages/CareerPage";
+import { PricingPage } from "@/components/elevate/pages/PricingPage";
 import { AdminPage } from "@/components/elevate/pages/AdminPage";
 
 const routeTitles: Record<string, string> = {
   "/": "Home | ElevateEdge Digital",
   "/services": "Services | ElevateEdge Digital",
-  "/portfolio": "Portfolio | ElevateEdge Digital",
+  "/portfolio": "Testimonials | ElevateEdge Digital",
   "/about": "About Us | ElevateEdge Digital",
   "/contact": "Order Now | ElevateEdge Digital",
   "/career": "Careers | ElevateEdge Digital",
+  "/pricing": "Pricing | ElevateEdge Digital",
   "/admin": "Admin Dashboard | ElevateEdge Digital",
 };
 
@@ -78,6 +79,8 @@ export default function Home() {
         return <ContactPage />;
       case "/career":
         return <CareerPage onNavigate={navigate} />;
+      case "/pricing":
+        return <PricingPage onNavigate={navigate} />;
       case "/admin":
         return <AdminPage onNavigate={navigate} />;
       default:
@@ -105,7 +108,6 @@ export default function Home() {
       </main>
       <Footer onNavigate={navigate} />
       <WhatsAppFab />
-      <ChatWidget />
       <ScrollTop currentPath={currentPath} />
     </div>
   );
