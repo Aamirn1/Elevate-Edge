@@ -1783,6 +1783,14 @@ button {
   padding-bottom: 4px;
 }
 
+.trust-bar-inner .trust-item {
+  flex-shrink: 0;
+}
+
+.trust-bar-inner .trust-item span {
+  white-space: nowrap;
+}
+
 .trust-divider {
   display: none;
 }

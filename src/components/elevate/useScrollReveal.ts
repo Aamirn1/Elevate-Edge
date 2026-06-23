@@ -6,6 +6,9 @@ import { useEffect } from "react";
  * Initializes scroll-reveal animations for elements with the
  * `.reveal`, `.reveal-left`, or `.reveal-right` classes.
  * Should be called once per page mount.
+ *
+ * Uses an interval to re-observe dynamically-loaded content
+ * (e.g., projects fetched after mount) so they also get observed.
  */
 export function useScrollReveal() {
   useEffect(() => {
@@ -22,11 +25,25 @@ export function useScrollReveal() {
       { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
     );
 
-    const elements = document.querySelectorAll(
-      ".reveal, .reveal-left, .reveal-right"
-    );
-    elements.forEach((el) => observer.observe(el));
+    const observeAll = () => {
+      document
+        .querySelectorAll(
+          ".reveal:not(.observed), .reveal-left:not(.observed), .reveal-right:not(.observed)"
+        )
+        .forEach((el) => {
+          el.classList.add("observed");
+          observer.observe(el);
+        });
+    };
 
-    return () => observer.disconnect();
-  });
+    observeAll();
+
+    // Re-observe periodically to catch dynamically loaded content
+    const interval = setInterval(observeAll, 1000);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
+  }, []);
 }

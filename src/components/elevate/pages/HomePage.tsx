@@ -17,37 +17,6 @@ interface HomePageProps {
   onNavigate: (path: string) => void;
 }
 
-const text1 = "Double Your";
-const text2 = "Business Growth";
-
-function renderTypewriter(text: string, startIndex = 0) {
-  const charDelay = 0.06;
-  const startDelay = 0.5;
-  return text.split("").map((char, index) => {
-    const delay = startDelay + (startIndex + index) * charDelay;
-    if (char === " ") {
-      return (
-        <span
-          key={index}
-          className="inline-block tw-char"
-          style={{ width: "0.3em", animationDelay: `${delay}s` }}
-        >
-          &nbsp;
-        </span>
-      );
-    }
-    return (
-      <span
-        key={index}
-        className="inline-block tw-char"
-        style={{ animationDelay: `${delay}s` }}
-      >
-        {char}
-      </span>
-    );
-  });
-}
-
 function formatDesc5Words(desc: string) {
   if (!desc) return "";
   const words = desc.split(" ");
@@ -161,15 +130,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 style={{
                   display: "inline-block",
                   color: "var(--primary)",
-                  textShadow: "0 0 20px rgba(0,184,148,0.4)",
+                  textShadow: "0 0 30px rgba(168, 85, 247, 0.5)",
                 }}
               >
-                {renderTypewriter(text1, 0)}
+                Double Your
               </span>
               <br />
-              <span style={{ display: "inline-block" }}>
-                {renderTypewriter(text2, text1.length + 1)}
-              </span>
+              <span style={{ display: "inline-block" }}>Business Growth</span>
             </h1>
             <p className="hero-sub">
               Affordable Web Design, Digital Ads &amp; Social Media Management
@@ -227,6 +194,11 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="container">
           <div className="trust-bar-inner">
             <div className="trust-item">
+              <i className="fas fa-globe"></i>
+              <span>{"Web Design\u00A0& Development"}</span>
+            </div>
+            <div className="trust-divider"></div>
+            <div className="trust-item">
               <i className="fas fa-mobile-alt"></i>
               <span>Mobile App Development</span>
             </div>
@@ -234,11 +206,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <div className="trust-item">
               <i className="fas fa-cogs"></i>
               <span>SaaS Solutions</span>
-            </div>
-            <div className="trust-divider"></div>
-            <div className="trust-item">
-              <i className="fas fa-globe"></i>
-              <span>Web Design &amp; Development</span>
             </div>
             <div className="trust-divider"></div>
             <div className="trust-item">
@@ -461,7 +428,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             </p>
           </div>
 
-          <div className="portfolio-slider reveal">
+          <div className="portfolio-slider">
             <div
               className="portfolio-track"
               id="home-portfolio-track"
